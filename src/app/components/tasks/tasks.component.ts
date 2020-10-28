@@ -7,16 +7,16 @@ import { TasksService } from '../../services/tasks.service';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  tasks =[];
+  teams =[];
 
   constructor( private tasksService: TasksService) { }
  // cuando inicie pide todas la tares
   ngOnInit(): void {
-    this.tasksService.getTasks()
+    this.tasksService.getTeam()
     .subscribe(
       res=>{
         console.log(res)
-        this.tasks=res;
+        this.teams=res;
       },
       err=>console.log(err)
     )

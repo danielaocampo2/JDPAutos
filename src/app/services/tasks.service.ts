@@ -6,11 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TasksService {
 
-  private URL = 'https://web12test.herokuapp.com/api'
+  private URL = 'https://pure-ravine-06656.herokuapp.com/api'
   constructor(private http: HttpClient) { }
 
-  getTasks(){
-    return  this.http.get<any>(this.URL + '/tasks');
+  getTeam(){
+    return  this.http.get<any>(this.URL + '/team');
   }
 
   getPrivateTasks(){

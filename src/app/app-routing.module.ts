@@ -14,11 +14,11 @@ const routes: Routes = [
   //Ruta inicial
   {
     path:'',
-    redirectTo:'/tasks',
+    redirectTo:'/team',
     pathMatch:'full'
   },
   {
-    path:'tasks',
+    path:'team',
     component:TasksComponent
   },
   { // necesita autenticación

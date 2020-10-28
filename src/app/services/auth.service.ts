@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = 'https://web12test.herokuapp.com/api'; // donde esta el back
+  private URL = 'https://pure-ravine-06656.herokuapp.com/api'; // donde esta el back
   constructor(private http: HttpClient,
               private router:Router) { }
 

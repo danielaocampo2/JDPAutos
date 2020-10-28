@@ -14,6 +14,7 @@ export class SigninComponent implements OnInit {
     email:'',
     password:''
   };
+  error=false;
   constructor(private authService: AuthService,
                private router:Router) { }
 
@@ -25,11 +26,21 @@ export class SigninComponent implements OnInit {
       .subscribe(
         res =>{
           console.log(res);
+          if(res.message=="accedido"){
+          this.error=false;
           localStorage.setItem('token', res.token)
           this.router.navigate(['/private']);
+
+        }
+          else{
+            this.error=true;
+          }
+
         },
-        err =>console.log(err)
+        err =>this.error=true
       )
+
+
   }
 
 }

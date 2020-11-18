@@ -6,15 +6,15 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = 'https://pure-ravine-06656.herokuapp.com/api'; // donde esta el back
+  private URL = 'https://tallerjdpautos.herokuapp.com'; // donde esta el back
   constructor(private http: HttpClient,
               private router:Router) { }
 
   signUp(user){
-    return this.http.post<any>(this.URL + '/signup', user); // devuelve un observable
+    return this.http.post<any>(this.URL + '/user', user); // devuelve un observable
   }
   signIn(user){
-    return this.http.post<any>(this.URL + '/signin', user);
+    return this.http.post<any>(this.URL + '/auth/login', user);
   }
   loggedIn() {
     //if(localStorage.getItem('token')){

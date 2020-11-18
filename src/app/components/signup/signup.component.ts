@@ -31,12 +31,12 @@ export class SignupComponent implements OnInit {
     // la respuesta que me da el servidor
       .subscribe(
         res =>{
-          console.log(res)
+         //console.log(res)
           // guarde token en el local storage
           localStorage.setItem('token', res.token);
           this.router.navigate(['/private']);
         },
-        err => console.log(err)
+        err => console.log("Hay un error 500") //err
     )
   }
 

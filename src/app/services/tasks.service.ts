@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TasksService {
 
-  private URL = 'https://pure-ravine-06656.herokuapp.com/api'
+  private URL = 'https://tallerjdpautos.herokuapp.com/user';
   constructor(private http: HttpClient) { }
 
   getTeam(){

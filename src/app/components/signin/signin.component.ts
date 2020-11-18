@@ -25,7 +25,7 @@ export class SigninComponent implements OnInit {
     this.authService.signIn(this.user)
       .subscribe(
         res =>{
-          console.log(res);
+          //console.log(res);
           if(res.message=="accedido"){
           this.error=false;
           localStorage.setItem('token', res.token)

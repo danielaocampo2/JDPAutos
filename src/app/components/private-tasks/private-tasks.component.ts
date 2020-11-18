@@ -16,10 +16,10 @@ export class PrivateTasksComponent implements OnInit {
     this.tasksService.getPrivateTasks()
       .subscribe(
         res=>{
-          console.log(res);
+          //console.log(res);
           this.tasks=res;
         },
-        err=>console.log(err)
+        err=>console.log("error") //err
       )
   }
 

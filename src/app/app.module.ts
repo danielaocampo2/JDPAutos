@@ -12,6 +12,8 @@ import { PrivateTasksComponent } from './components/private-tasks/private-tasks.
 
 import { AuthGuard } from './auth.guard'; // agreguelo en providers
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { OwnerRegisterComponent } from './components/owner-register/owner-register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,16 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     SignupComponent,
     SigninComponent,
     TasksComponent,
-    PrivateTasksComponent
+    PrivateTasksComponent,
+    OwnerRegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+
   ],
   providers: [
     AuthGuard,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // importar el servicio
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from  '../../services/auth.service';
 // para navegar
 import {Router} from '@angular/router';
 

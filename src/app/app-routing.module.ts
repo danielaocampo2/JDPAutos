@@ -7,6 +7,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { OwnerRegisterComponent } from './components/owner-register/owner-register.component';
 
 import { AuthGuard } from './auth.guard'; // pongalo en las rutas que quiera proteger
 
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path:'signin',
     component:SigninComponent
+  },
+  {
+    path:'owner-register',
+    component:OwnerRegisterComponent
   }
 
 ];

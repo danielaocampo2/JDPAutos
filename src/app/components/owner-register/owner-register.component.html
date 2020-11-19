@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                SignUp
+            </div>
+            <div class="card-body">
+                <form (submit)="signUp()"  [formGroup]="validatorGroup">
+                    <div class="form-group">
+                        <label for="vehicle">Placa Vehiculo:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('number').invalid && validatorGroup.get('number').touched" type="text" [(ngModel)]="owner.vehicle"  name="vehicle" class="form-control" placeholder="vehicle" formControlName="placa">
+                        <div *ngIf="(placa.invalid && placa.touched) || placa.dirty">
+                            <small *ngIf="placa.errors?.required" class="text-danger">Es necesario que ingreses una placa</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="placa.errors?.pattern" class="text-danger">Ingresa por favor una placa válida</small>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nombres:</label>
+                        <input type="text" [(ngModel)]="owner.name" [ngModelOptions]="{standalone: true}" name="name" class="form-control" placeholder="nombres" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surname"> Apellidos:</label>
+                        <input type="text" [(ngModel)]="owner.surname" [ngModelOptions]="{standalone: true}" name="surname" class="form-control" placeholder="Apellidos" required autofocus>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('email').invalid && validatorGroup.get('email').touched" type="email" [(ngModel)]="owner.email" name="email" class="form-control" placeholder="Correo" formControlName="email">
+                        <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+                            <small *ngIf="primEmail.errors?.required" class="text-danger">El Email es requerido</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="primEmail.errors?.pattern" class="text-danger">Por favor ingresa un Email correcto</small>
+                          </div>
+                    </div>
+                  
+                    <div class="form-group">
+                        <label for="phone">Telefono:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('number').invalid && validatorGroup.get('number').touched" type="text" [(ngModel)]="owner.phone"  class="form-control" placeholder="Telefono" formControlName="number">
+                        <div *ngIf="(justNumber.invalid && justNumber.touched) || justNumber.dirty">
+                            <small *ngIf="justNumber.errors?.required" class="text-danger">El telefono es requerido</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="justNumber.errors?.pattern" class="text-danger">Por favor, ingresa un telefono correcto</small>
+                          </div>
+                    </div>
+        
+                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
+                        SignUp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

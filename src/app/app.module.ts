@@ -12,6 +12,8 @@ import { PrivateTasksComponent } from './components/private-tasks/private-tasks.
 
 import { AuthGuard } from './auth.guard'; // agreguelo en providers
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     SignupComponent,
     SigninComponent,
     TasksComponent,
-    PrivateTasksComponent
+    PrivateTasksComponent,
+    RegisterVehicleComponent
+    
   ],
   imports: [
     BrowserModule,

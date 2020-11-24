@@ -6,23 +6,32 @@
             </div>
             <div class="card-body">
                 <form (submit)="signUp()"  [formGroup]="validatorGroup">
-                    <div class="form-group">
+                  <!--<div class="form-group">
                         <label for="vehicle">Placa Vehiculo:</label>
                         <input [class.is-invalid] = "validatorGroup.get('number').invalid && validatorGroup.get('number').touched" type="text" [(ngModel)]="owner.vehicle"  name="vehicle" class="form-control" placeholder="vehicle" formControlName="placa">
                         <div *ngIf="(placa.invalid && placa.touched) || placa.dirty">
                             <small *ngIf="placa.errors?.required" class="text-danger">Es necesario que ingreses una placa</small>
-                            <!--question mark(?) is a safe navigation operator-->
                             <small *ngIf="placa.errors?.pattern" class="text-danger">Ingresa por favor una placa válida</small>
                           </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="name">Nombres:</label>
                         <input type="text" [(ngModel)]="owner.name" [ngModelOptions]="{standalone: true}" name="name" class="form-control" placeholder="nombres" required autofocus>
                     </div>
 
-                    <div class="form-group">
+                   <!---- <div class="form-group">
                         <label for="surname"> Apellidos:</label>
                         <input type="text" [(ngModel)]="owner.surname" [ngModelOptions]="{standalone: true}" name="surname" class="form-control" placeholder="Apellidos" required autofocus>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="cc">CC:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('numberCC').invalid && validatorGroup.get('numberCC').touched" type="text" [(ngModel)]="owner.id_owner" name="id_owner" class="form-control" placeholder="Cédula" formControlName="numberCC">
+                        <div *ngIf="(justNumberCC.invalid && justNumberCC.touched) || justNumberCC.dirty">
+                            <small *ngIf="justNumberCC.errors?.required" class="text-danger">La cédula es requerida</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="justNumberCC.errors?.pattern" class="text-danger">Por favor, ingresa una cédula correcta</small>
+                          </div>
                     </div>
                    
                     <div class="form-group">
@@ -45,7 +54,7 @@
                           </div>
                     </div>
         
-                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
+                    <button mat-stroked-button color="primary" type="submit"  (click)="signUp()" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
                         SignUp
                     </button>
                 </form>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { OwnerService } from '../../services/owner.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-owner-register',
@@ -10,6 +12,8 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./owner-register.component.css'],
 })
 export class OwnerRegisterComponent implements OnInit {
+  correct = 0;
+  showError = 0;
   title = 'email-validation';
   validatorGroup = new FormGroup({
     email: new FormControl('', [
@@ -20,21 +24,26 @@ export class OwnerRegisterComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^-?(0|[1-9]\d*)?$/),
     ]),
-    placa: new FormControl('', [
+     /*placa: new FormControl('', [
       Validators.required,
       Validators.pattern(/^([A-Z]{3}[0-9]{3})?$/),
+    ]),*/
+    numberCC: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[0-9]{1,11}$/),
     ]),
   });
 
   owner = {
-    vehicle: '',
+    id_owner:'',
     name: '',
-    surname: '',
+    //surname: '',
     email: '',
     phone: '',
+    //password:''
   };
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private ownerService: OwnerService, private router: Router, private readonly dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -50,22 +59,59 @@ export class OwnerRegisterComponent implements OnInit {
     return this.validatorGroup.get('placa');
   }
 
-  signUp() {
-    console.log('Ya');
+  get justNumberCC() {
+    return this.validatorGroup.get('numberCC');
   }
 
-  /*signUp() {
-    this.authService
+  get name() {
+    return this.validatorGroup.get('name');
+  }
+
+  get role() {
+    return this.validatorGroup.get('role');
+  }
+
+  signUp() {
+    this.showError=0;
+    this.ownerService
       .signUp(this.owner)
       // la respuesta que me da el servidor
       .subscribe(
         (res) => {
-          console.log(res);
+            localStorage.setItem('token', res.token);
+            this.router.navigate(['/private']);
+            this.correct = 1;
+            console.log("Hola");
           // guarde token en el local storage
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['/private']);
         },
-        (err) => console.log(err)
+        (err) => {
+            this.showError = this.showError+1;
+            if(err["error"]["message"] == "El usuario ya existe"  && this.correct == 0){
+              if (this.showError==1) {
+                this.openDialog(); 
+              }              
+             } 
+            else{
+            console.log(err);
+          }
+         
+        }
       );
-  }*/
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.minWidth = '350px';
+    dialogConfig.maxWidth = '600px';
+
+    dialogConfig.data = {
+      msg: "El usuario ya existe",
+    };
+
+    this.dialog.open(InfoDialogComponent, dialogConfig).afterClosed().subscribe((success) => {
+  },
+  (e) => {
+      console.error(e);
+  });
+  }
 }

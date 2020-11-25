@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import {MatButtonModule} from '@angular/material/button';
     PrivateTasksComponent,
     OwnerRegisterComponent,
     OwnerSigninComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    RegisterVehicleComponent
+    
   ],
   imports: [
     BrowserModule,

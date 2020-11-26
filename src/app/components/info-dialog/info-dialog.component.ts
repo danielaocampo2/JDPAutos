@@ -15,7 +15,7 @@ export class InfoDialogComponent {
     @Inject(MAT_DIALOG_DATA) data
   ) { 
     this.data=data;
-    console.log(this.data);
+    console.log(this.data["msg"]);
   }
 
 confirm(){

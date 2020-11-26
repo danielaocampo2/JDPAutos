@@ -8,6 +8,8 @@ import { PrivateTasksComponent } from './components/private-tasks/private-tasks.
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { OwnerRegisterComponent } from './components/owner-register/owner-register.component';
+import { OwnerSigninComponent } from "./components/owner-signin/owner-signin.component";
+import {RegisterVehicleComponent} from './components/register-vehicle/register-vehicle.component'
 
 import { AuthGuard } from './auth.guard'; // pongalo en las rutas que quiera proteger
 
@@ -38,7 +40,17 @@ const routes: Routes = [
   {
     path:'owner-register',
     component:OwnerRegisterComponent
-  }
+  },
+  {
+    path:'owner-signin',
+    component:OwnerSigninComponent
+  },
+
+  { // necesita autenticación para registrar vehiculo
+    path:'register-vehicle',
+    component:RegisterVehicleComponent,
+    canActivate:[AuthGuard]
+  },
 
 ];
 

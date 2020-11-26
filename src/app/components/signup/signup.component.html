@@ -5,27 +5,46 @@
                 SignUp
             </div>
             <div class="card-body">
-                <form (submit)="signUp()">
+                <form (submit)="signUp()" [formGroup]="validatorGroup">
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" [(ngModel)]="user.name" name="name" class="form-control" placeholder="Name" required autofocus>
+                        <input [class.is-invalid] = "validatorGroup.get('name').invalid && validatorGroup.get('name').touched" type="text" [(ngModel)]="user.name" name="name" class="form-control" placeholder="Name"  formControlName="name" autofocus>
+                        <div *ngIf="(name.invalid && name.touched) || name.dirty">
+                            <small *ngIf="name.errors?.required" class="text-danger">El nombre es requerido</small>
+                          </div>
                     </div>
                     <div class="form-group">
                         <label for="cc">CC:</label>
-                        <input type="text" [(ngModel)]="user.id_user" name="id_user" class="form-control" placeholder="Cédula" required autofocus>
+                        <input [class.is-invalid] = "validatorGroup.get('number').invalid && validatorGroup.get('number').touched" type="text" [(ngModel)]="user.id_user" name="id_user" class="form-control" placeholder="Cédula" formControlName="number">
+                        <div *ngIf="(justNumber.invalid && justNumber.touched) || justNumber.dirty">
+                            <small *ngIf="justNumber.errors?.required" class="text-danger">La cédula es requerida</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="justNumber.errors?.pattern" class="text-danger">Por favor, ingresa una cédula correcta</small>
+                          </div>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required autofocus>
+                        <input [class.is-invalid] = "validatorGroup.get('email').invalid && validatorGroup.get('email').touched" type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" formControlName="email">
+                        <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+                            <small *ngIf="primEmail.errors?.required" class="text-danger">El Email es requerido</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="primEmail.errors?.pattern" class="text-danger">Por favor ingresa un Email correcto</small>
+                          </div>
                     </div>
                     <div class="form-group">
-                        <label for="passwor">Password:</label>
-                        <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
+                        <label for="password">Password:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('password').invalid && validatorGroup.get('password').touched" type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="password" formControlName="password">
+                        <div *ngIf="(password.invalid && password.touched) || password.dirty">
+                            <small *ngIf="password.errors?.required" class="text-danger">La contraseña es requerida</small>
+                          </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Role</label>
-                        <select [(ngModel)]="user.role" name="role" class="form-control" id="role" required>
+                        <select [class.is-invalid] = "validatorGroup.get('role').invalid && validatorGroup.get('role').touched" [(ngModel)]="user.role" name="role" class="form-control" id="role" formControlName="role">
+                            <div *ngIf="(role.invalid && role.touched) || role.dirty">
+                                <small *ngIf="role.errors?.required" class="text-danger">Debes asignarle un rol al empleado</small>
+                              </div>
                         <option>admin</option>
                         <option>Gerente general</option>
                         <option>Asistente de gerencia</option>
@@ -36,12 +55,16 @@
                         <option>Tecnico de taller</option>
                       </select>
                     </div>
+<<<<<<< HEAD
                     <!-- Este codigo es para la foto
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Inserta tu foto</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1">
                     </div>-->
                     <button type="submit" class="btn btn-primary btn-block">
+=======
+                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
+>>>>>>> 4ebb16cae65f4a194c29c88575fa83593faa958a
                         SignUp
                     </button>
                 </form>

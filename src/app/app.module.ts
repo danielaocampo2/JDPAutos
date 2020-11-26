@@ -14,6 +14,14 @@ import { AuthGuard } from './auth.guard'; // agreguelo en providers
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { OwnerRegisterComponent } from './components/owner-register/owner-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OwnerSigninComponent } from './components/owner-signin/owner-signin.component';
+import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
+
 
 @NgModule({
   declarations: [
@@ -22,14 +30,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     SigninComponent,
     TasksComponent,
     PrivateTasksComponent,
-    OwnerRegisterComponent
+    OwnerRegisterComponent,
+    OwnerSigninComponent,
+    InfoDialogComponent,
+    RegisterVehicleComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatButtonModule
 
   ],
   providers: [

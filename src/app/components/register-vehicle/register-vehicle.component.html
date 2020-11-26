@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                REGISTRO DE VEHICULOS
+            </div>
+            <div class="card-body">
+                <form (submit)="registerVehicle()" [formGroup]="validatorGroup">
+                    
+
+                    <div class="form-group">
+                        <label for="placa">Placa Vehiculo:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('placa').invalid && validatorGroup.get('placa').touched" type="text" [(ngModel)]="vehicle.placa"  name="placa" class="form-control" placeholder="placa" formControlName="placa">
+                        <div *ngIf="(placa.invalid && placa.touched) || placa.dirty">
+                            <small *ngIf="placa.errors?.required" class="text-danger">Es necesario que ingreses una placa</small>
+                            <small *ngIf="placa.errors?.pattern" class="text-danger">Ingresa por favor una placa válida</small>
+                          </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="id_owner">owner Id:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('id_owner').invalid && validatorGroup.get('id_owner').touched" type="text"  [(ngModel)]="vehicle.id_owner" name="id_owner" class="form-control" placeholder="Cédula Propietario" formControlName="id_owner">
+                        <div *ngIf="(justId.invalid && justId.touched) || justId.dirty">
+                            <small *ngIf="justId.errors?.required" class="text-danger">La cédula es requerida</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="justId.errors?.pattern" class="text-danger">Por favor, ingresa una cédula correcta</small>
+                          </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="marca">Marca:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('marca').invalid && validatorGroup.get('marca').touched" type="text" [(ngModel)]="vehicle.marca" name="marca" class="form-control" placeholder="Marca"   formControlName="marca" autofocus>
+                        <div *ngIf="(marca.invalid && marca.touched) || marca.dirty">
+                            <small *ngIf="marca.errors?.required" class="text-danger">La marca del vahiculo es requerida</small>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('modelo').invalid && validatorGroup.get('modelo').touched" type="text" [(ngModel)]="vehicle.modelo" name="modelo" class="form-control" placeholder="Modelo"   formControlName="modelo" autofocus>
+                        <div *ngIf="(modelo.invalid && modelo.touched) || modelo.dirty">
+                            <small *ngIf="modelo.errors?.required" class="text-danger">El modelo del vahiculo es requerido</small>
+                          </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="color">Color:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('color').invalid && validatorGroup.get('color').touched" type="text" [(ngModel)]="vehicle.color" name="color" class="form-control" placeholder="color"   formControlName="color" autofocus>
+                        <div *ngIf="(color.invalid && color.touched) || color.dirty">
+                            <small *ngIf="color.errors?.required" class="text-danger">La marca del vahiculo es requerida</small>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateIn">Fecha de ingreso:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('dateIn').invalid && validatorGroup.get('dateIn').touched"  type="datetime-local" [(ngModel)]="vehicle.dateIn" name="dateIn" class="form-control" placeholder="Fecha de Ingreso" formControlName="dateIn" autofocus>
+                        <div *ngIf="(dateIn.invalid && dateIn.touched) || dateIn.dirty">
+                            <small *ngIf="dateIn.errors?.required" class="text-danger">Debe ingresar la fecha de ingreso del vehiculo</small>
+                          </div>
+                    </div>
+                    
+                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
+                        Registrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

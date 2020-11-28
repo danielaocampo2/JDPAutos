@@ -16,7 +16,10 @@
                     </div> -->
                     <div class="form-group">
                         <label for="name">Nombres:</label>
-                        <input type="text" [(ngModel)]="owner.name" [ngModelOptions]="{standalone: true}" name="name" class="form-control" placeholder="nombres" required autofocus>
+                        <input [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched" type="text" [(ngModel)]="owner.name" name="name" class="form-control" placeholder="nombres" formControlName="name" autofocus>
+                        <div *ngIf="(name.invalid && name.touched) || name.dirty">
+                            <small *ngIf="name.errors?.required" class="text-danger">El nombre es requerido</small>
+                        </div>
                     </div>
 
                    <!---- <div class="form-group">

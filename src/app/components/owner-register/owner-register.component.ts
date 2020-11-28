@@ -32,6 +32,9 @@ export class OwnerRegisterComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^[0-9]{1,11}$/),
     ]),
+    name: new FormControl('', [
+      Validators.required
+    ])
   });
 
   owner = {
@@ -72,7 +75,7 @@ export class OwnerRegisterComponent implements OnInit {
   }
 
   signUp() {
-    this.showError=0;
+    this.correct=0;
     this.ownerService
       .signUp(this.owner)
       // la respuesta que me da el servidor
@@ -85,11 +88,11 @@ export class OwnerRegisterComponent implements OnInit {
           // guarde token en el local storage
         },
         (err) => {
-            this.showError = this.showError+1;
+            //this.showError = this.showError+1;
             if(err["error"]["message"] == "El usuario ya existe"  && this.correct == 0){
-              if (this.showError==1) {
+             // if (this.showError==1) {
                 this.openDialog(); 
-              }              
+             // }              
              } 
             else{
             console.log(err);

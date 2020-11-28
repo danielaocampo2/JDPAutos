@@ -28,18 +28,24 @@ export class SignupComponent implements OnInit {
       Validators.required
     ]),
     password: new FormControl('',[
-      Validators.required
+      Validators.required,
+      Validators.minLength(5)
     ]),
     role: new FormControl('',[
       Validators.required
+    ]),
+    phone: new FormControl('',[
+      Validators.required,
+      Validators.pattern(/^-?(0|[1-9]\d*)?$/)
     ])
   });
 
   user = {
-    name: '',
     id_user: '',
+    name: '',
     email: '',
     password: '',
+    phone: '',
     role: ''
 
   };
@@ -73,6 +79,10 @@ export class SignupComponent implements OnInit {
 
   get role(){
     return this.validatorGroup.get('role');
+  }
+
+  get phone(){
+    return this.validatorGroup.get('phone')
   }
 
   signUp() {

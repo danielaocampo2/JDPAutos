@@ -33,10 +33,20 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="phone">Telefono:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('phone').invalid && validatorGroup.get('phone').touched" type="text" [(ngModel)]="user.phone"  class="form-control" placeholder="Telefono" formControlName="phone">
+                        <div *ngIf="(phone.invalid && phone.touched) || phone.dirty">
+                            <small *ngIf="phone.errors?.required" class="text-danger">El telefono es requerido</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="phone.errors?.pattern" class="text-danger">Por favor, ingresa un telefono correcto</small>
+                          </div>
+                    </div>
+                    <div class="form-group">
                         <label for="password">Password:</label>
                         <input [class.is-invalid]="validatorGroup.get('password').invalid && validatorGroup.get('password').touched" type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="password" formControlName="password">
                         <div *ngIf="(password.invalid && password.touched) || password.dirty">
                             <small *ngIf="password.errors?.required" class="text-danger">La contraseña es requerida</small>
+                            <small *ngIf="password.errors?.minlength" class="text-danger">La contraseña debe tener más de 5 caracteres</small>
                         </div>
                     </div>
                     <div class="form-group">

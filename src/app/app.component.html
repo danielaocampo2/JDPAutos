@@ -11,6 +11,8 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/private" routerLinkActive="active">Campo privado</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/private" routerLinkActive="active">Private</a>
 
                 </li>
@@ -24,10 +26,14 @@
                         <a class="nav-link" routerLink="/signup" routerLinkActive="active">SignUp</a>
                     </li>
                 </ng-container>
+            
                 <ng-template #loggedIn>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/register-vehicle" routerLinkActive="active">Registrar Vehiculo</a>
                         <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/owner-register" routerLinkActive="active">Registrar Propietario</a>
                     </li>
                 </ng-template>
 

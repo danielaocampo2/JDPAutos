@@ -21,7 +21,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { RegisterVehicleComponent } from './components/register-vehicle/register
     BrowserAnimationsModule,
     MatSliderModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule
 
   ],
   providers: [

@@ -10,7 +10,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component';
 
-import { AuthGuard } from './auth.guard'; // agreguelo en providers
+import { AuthGuard } from './guards/auth.guard'; // agreguelo en providers
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { OwnerRegisterComponent } from './components/owner-register/owner-register.component';
 import { ReactiveFormsModule } from '@angular/forms';

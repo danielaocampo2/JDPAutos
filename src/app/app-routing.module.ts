@@ -12,8 +12,9 @@ import { OwnerSigninComponent } from "./components/owner-signin/owner-signin.com
 import {RegisterVehicleComponent} from './components/register-vehicle/register-vehicle.component';
 import {EmployeeUpdateComponent} from './components/employee-update/employee-update.component';
 
-import { AuthGuard } from './auth.guard'; // pongalo en las rutas que quiera proteger
-import { AdminGuardGuard } from './guards/adminGuard.guard'; // pongalo en las rutas que quiera proteger
+import { AuthGuard } from './guards/auth.guard'; // pongalo en las rutas que quiera proteger
+import { SupervisorGuard } from './guards/supervisor.guard'; // pongalo en las rutas que quiera proteger
+import { AdminGuard } from './guards/admin.guard'; // pongalo en las rutas que quiera proteger
 
 const routes: Routes = [
   //Ruta inicial
@@ -33,7 +34,8 @@ const routes: Routes = [
   },
   {
     path:'signup',
-    component:SignupComponent
+    component:SignupComponent,
+    canActivate: [AuthGuard,AdminGuard] 
   },
   {
     path:'signin',
@@ -42,7 +44,7 @@ const routes: Routes = [
   {
     path:'owner-register',
     component:OwnerRegisterComponent,
-    canActivate: [AdminGuardGuard]
+    canActivate: [AuthGuard,SupervisorGuard]
   },
   {
     path:'owner-signin',
@@ -52,7 +54,7 @@ const routes: Routes = [
   { // necesita autenticación para registrar vehiculo
     path:'register-vehicle',
     component:RegisterVehicleComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, SupervisorGuard]
   },
   { // necesita autenticación para registrar vehiculo
     path:'employee-update',

@@ -5,13 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuardGuard implements CanActivate {
+export class EmpleadoGuard implements CanActivate {
   constructor(private router: Router) { }
 
   public canActivate() {
     let rol = localStorage.getItem('mirol');
-    console.log(rol);
-    if (rol != "Supervisor de taller") {
+    if (rol) {
       this.router.navigate(['/']); //Lo enviamos a la página que queramos
       return false;
     }

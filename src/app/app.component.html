@@ -18,23 +18,22 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/signin" routerLinkActive="active">SignIn</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/signup" routerLinkActive="active">SignUp</a>
-                    </li>
+
                 </ng-container>
             
                 <ng-template #loggedIn>
-                    <li class="nav-item">
+
+                    <li class="nav-item" *ngIf="mirol()">
                         <a class="nav-link" routerLink="/employee-update" routerLinkActive="active">Actualizar datos</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="mirol() == 'Supervisor de taller'">
                         <a class="nav-link" routerLink="/register-vehicle" routerLinkActive="active">Registrar Vehiculo</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="mirol() == 'Supervisor de taller'">
                         <a class="nav-link" routerLink="/owner-register" routerLinkActive="active">Registrar Propietario</a>
+                    </li>
+                    <li class="nav-item" *ngIf="mirol() == 'admin'">
+                        <a class="nav-link" routerLink="/signup" routerLinkActive="active">Registrar Empleado</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()">Logout</a>
@@ -45,7 +44,7 @@
         </div>
     </div>
 </nav>
-<mat-grid-list cols="4" rowHeight="100px">
+<mat-grid-list cols="4" rowHeight="100px" *ngIf="!authService.loggedIn()"> 
     <mat-grid-tile
         
         [colspan]="1"

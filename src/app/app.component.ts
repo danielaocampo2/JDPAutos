@@ -10,5 +10,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 export class AppComponent {
   constructor(public authService: AuthService){}
+   
 
+   public mirol(){
+    let mirol = localStorage.getItem('mirol');
+    return mirol;
+   }
+   
 }

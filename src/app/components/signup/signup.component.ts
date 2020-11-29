@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-signup',
@@ -10,6 +12,8 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
+  text = "El empleado ya existe. Revisa por favor la cédula o el correo electrónico asociado a él";
 
   validatorGroup = new FormGroup({
     email: new FormControl('', [
@@ -52,7 +56,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router:Router) { }
+    private router:Router,
+    private readonly dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -96,8 +101,24 @@ export class SignupComponent implements OnInit {
           localStorage.setItem('token', res.token);
           this.router.navigate(['/private']);
         },
-        err => console.log("Hay un error 500") //err
+        err => this.openDialog() //err
     )
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.minWidth = '350px';
+    dialogConfig.maxWidth = '600px';
+
+    dialogConfig.data = {
+      msg: this.text,
+    };
+
+    this.dialog.open(InfoDialogComponent, dialogConfig).afterClosed().subscribe((success) => {
+  },
+  (e) => {
+      console.error(e);
+  });
   }
 
 }

@@ -13,7 +13,7 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
   styleUrls: ['./employee-update.component.css']
 })
 export class EmployeeUpdateComponent implements OnInit {
-  text = "Ese correo ya está asociado a otro empleado"
+  text = "Ese correo ya está asociado a otro empleado";
 
   userID = 536;
 

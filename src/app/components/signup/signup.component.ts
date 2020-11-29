@@ -85,7 +85,7 @@ export class SignupComponent implements OnInit {
     return this.validatorGroup.get('phone')
   }
 
-  signUp() {
+  onSubmit() {
     //console.log(this.user);
     this.authService.signUp(this.user)
     // la respuesta que me da el servidor

@@ -5,7 +5,7 @@
                 SignUp
             </div>
             <div class="card-body">
-                <form (submit)="signUp()" [formGroup]="validatorGroup">
+                <form (submit)="onSubmit()" [formGroup]="validatorGroup">
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched" type="text" [(ngModel)]="user.name" name="name" class="form-control" placeholder="Name" formControlName="name" autofocus>

@@ -74,8 +74,10 @@ export class OwnerRegisterComponent implements OnInit {
     return this.validatorGroup.get('role');
   }
 
-  signUp() {
+  submit() {
+    console.log("lo estoy repitiendo");
     this.correct=0;
+    this.showError=0;
     this.ownerService
       .signUp(this.owner)
       // la respuesta que me da el servidor
@@ -88,11 +90,10 @@ export class OwnerRegisterComponent implements OnInit {
           // guarde token en el local storage
         },
         (err) => {
-            //this.showError = this.showError+1;
             if(err["error"]["message"] == "El usuario ya existe"  && this.correct == 0){
-             // if (this.showError==1) {
+              if (this.showError==0) {
                 this.openDialog(); 
-             // }              
+             }              
              } 
             else{
             console.log(err);

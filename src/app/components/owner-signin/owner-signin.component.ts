@@ -12,8 +12,6 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
   styleUrls: ['./owner-signin.component.css'],
 })
 export class OwnerSigninComponent implements OnInit {
-  showError = 0;
-  correct = 0;
   text = "El token ha caducado"
   owner = {
     // email: '',
@@ -25,7 +23,6 @@ export class OwnerSigninComponent implements OnInit {
   ngOnInit(): void {}
 
   signIn() {
-    this.showError=0;
     this.ownerService.signIn(this.owner).subscribe(
       (res) => {
         //console.log(res);
@@ -41,11 +38,7 @@ export class OwnerSigninComponent implements OnInit {
         }
       },
       (err) => {this.error = true
-        this.showError = this.showError+1;
-         if (this.showError==1) {
-           this.openDialog(); 
-          console.log(err);
-        }         
+           this.openDialog();    
       }
     );
   }

@@ -12,8 +12,6 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
   styleUrls: ['./owner-register.component.css'],
 })
 export class OwnerRegisterComponent implements OnInit {
-  correct = 0;
-  showError = 0;
   title = 'email-validation';
   validatorGroup = new FormGroup({
     email: new FormControl('', [
@@ -75,9 +73,6 @@ export class OwnerRegisterComponent implements OnInit {
   }
 
   submit() {
-    console.log("lo estoy repitiendo");
-    this.correct=0;
-    this.showError=0;
     this.ownerService
       .signUp(this.owner)
       // la respuesta que me da el servidor
@@ -85,15 +80,12 @@ export class OwnerRegisterComponent implements OnInit {
         (res) => {
             localStorage.setItem('token', res.token);
             this.router.navigate(['/private']);
-            this.correct = 1;
             console.log("Hola");
           // guarde token en el local storage
         },
         (err) => {
-            if(err["error"]["message"] == "El usuario ya existe"  && this.correct == 0){
-              if (this.showError==0) {
-                this.openDialog(); 
-             }              
+             if(err["error"]["message"] == "El usuario ya existe"){
+                this.openDialog();               
              } 
             else{
             console.log(err);

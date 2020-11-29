@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                SignUp
+            </div>
+            <div class="card-body">
+                <form (submit)="onSubmit()" [formGroup]="validatorGroup">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched" type="text" [(ngModel)]="user.name" name="name" class="form-control" placeholder="Name" formControlName="name" autofocus>
+                        <div *ngIf="(name.invalid && name.touched) || name.dirty">
+                            <small *ngIf="name.errors?.required" class="text-danger">El nombre es requerido</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input [class.is-invalid]="validatorGroup.get('email').invalid && validatorGroup.get('email').touched" type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" formControlName="email">
+                        <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+                            <small *ngIf="primEmail.errors?.required" class="text-danger">El Email es requerido</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="primEmail.errors?.pattern" class="text-danger">Por favor ingresa un Email correcto</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefono:</label>
+                        <input [class.is-invalid] = "validatorGroup.get('phone').invalid && validatorGroup.get('phone').touched" type="text" [(ngModel)]="user.phone"  class="form-control" placeholder="Telefono" formControlName="phone">
+                        <div *ngIf="(phone.invalid && phone.touched) || phone.dirty">
+                            <small *ngIf="phone.errors?.required" class="text-danger">El telefono es requerido</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="phone.errors?.pattern" class="text-danger">Por favor, ingresa un telefono correcto</small>
+                          </div>
+                    </div>
+                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
+                        Actualizar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

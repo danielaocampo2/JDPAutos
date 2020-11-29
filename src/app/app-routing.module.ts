@@ -9,7 +9,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { OwnerRegisterComponent } from './components/owner-register/owner-register.component';
 import { OwnerSigninComponent } from "./components/owner-signin/owner-signin.component";
-import {RegisterVehicleComponent} from './components/register-vehicle/register-vehicle.component'
+import {RegisterVehicleComponent} from './components/register-vehicle/register-vehicle.component';
+import {EmployeeUpdateComponent} from './components/employee-update/employee-update.component';
 
 import { AuthGuard } from './auth.guard'; // pongalo en las rutas que quiera proteger
 
@@ -51,7 +52,11 @@ const routes: Routes = [
     component:RegisterVehicleComponent,
     canActivate:[AuthGuard]
   },
-
+  { // necesita autenticación para registrar vehiculo
+    path:'employee-update',
+    component:EmployeeUpdateComponent,
+    canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({

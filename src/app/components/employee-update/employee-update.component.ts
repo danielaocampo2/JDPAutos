@@ -6,36 +6,23 @@ import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 
-@Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
-})
-export class SignupComponent implements OnInit {
 
-  text = "El empleado ya existe. Revisa por favor la cédula o el correo electrónico asociado a él";
+@Component({
+  selector: 'app-employee-update',
+  templateUrl: './employee-update.component.html',
+  styleUrls: ['./employee-update.component.css']
+})
+export class EmployeeUpdateComponent implements OnInit {
+  text = "Ese correo ya está asociado a otro empleado";
+
+  userID = 536;
 
   validatorGroup = new FormGroup({
     email: new FormControl('', [
       Validators.required,
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
     ]),
-    number: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^[0-9]{1,11}$/),
-    ]),
-    /*placa: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^([A-Z]{3}[0-9]{3})?$/),
-    ]),*/
     name: new FormControl('', [
-      Validators.required
-    ]),
-    password: new FormControl('',[
-      Validators.required,
-      Validators.minLength(5)
-    ]),
-    role: new FormControl('',[
       Validators.required
     ]),
     phone: new FormControl('',[
@@ -45,13 +32,9 @@ export class SignupComponent implements OnInit {
   });
 
   user = {
-    id_user: '',
     name: '',
     email: '',
-    password: '',
-    phone: '',
-    role: ''
-
+    phone: ''
   };
 
   constructor(
@@ -66,24 +49,8 @@ export class SignupComponent implements OnInit {
     return this.validatorGroup.get('email');
   }
 
-  get justNumber() {
-    return this.validatorGroup.get('number');
-  }
-
-  get placa() {
-    return this.validatorGroup.get('placa');
-  }
-
   get name() {
     return this.validatorGroup.get('name');
-  }
-
-  get password(){
-    return this.validatorGroup.get('password');
-  }
-
-  get role(){
-    return this.validatorGroup.get('role');
   }
 
   get phone(){
@@ -92,16 +59,16 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     //console.log(this.user);
-    this.authService.signUp(this.user)
+    this.authService.update(this.user, this.userID)
     // la respuesta que me da el servidor
       .subscribe(
         res =>{
-         //console.log(res)
           // guarde token en el local storage
           localStorage.setItem('token', res.token);
           this.router.navigate(['/private']);
         },
         err => this.openDialog() //err
+        
     )
   }
 
@@ -120,5 +87,4 @@ export class SignupComponent implements OnInit {
       console.error(e);
   });
   }
-
 }

@@ -26,6 +26,7 @@ export class AuthService {
   }
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('mirol');
     this.router.navigate(['./signin'])
   }
 

@@ -12,6 +12,7 @@ import { OwnerSigninComponent } from "./components/owner-signin/owner-signin.com
 import {RegisterVehicleComponent} from './components/register-vehicle/register-vehicle.component'
 
 import { AuthGuard } from './auth.guard'; // pongalo en las rutas que quiera proteger
+import { AdminGuardGuard } from './guards/admin-guard.guard'; // pongalo en las rutas que quiera proteger
 
 const routes: Routes = [
   //Ruta inicial
@@ -39,7 +40,8 @@ const routes: Routes = [
   },
   {
     path:'owner-register',
-    component:OwnerRegisterComponent
+    component:OwnerRegisterComponent,
+    canActivate: [AdminGuardGuard]
   },
   {
     path:'owner-signin',

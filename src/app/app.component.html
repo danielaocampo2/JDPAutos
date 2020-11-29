@@ -43,7 +43,37 @@
         </div>
     </div>
 </nav>
-
+<mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        
+        [colspan]="1"
+        [rowspan]="1"
+        [style.background]="">
+      
+    </mat-grid-tile>
+    <mat-grid-tile
+        
+        [colspan]="1"
+        [rowspan]="1"
+        [style.background]="'wheat'">
+        <a class="nav-link" routerLink="/signin" routerLinkActive="active">AREA DE EMPLEADOS !</a>
+    </mat-grid-tile>
+    <mat-grid-tile
+        
+        [colspan]="1"
+        [rowspan]="1"
+        [style.background]="'lightblue'">
+        <a class="nav-link" routerLink="/owner-signin" routerLinkActive="active">AREA DE CLIENTES !</a>
+       
+    </mat-grid-tile>
+    <mat-grid-tile
+        
+        [colspan]="1"
+        [rowspan]="1"
+        [style.background]="">
+      
+    </mat-grid-tile>
+  </mat-grid-list>
 <div class="container p-5">
     <router-outlet>
     </router-outlet>

@@ -15,8 +15,8 @@ export class InfoDialogComponent {
 
   ) {
     this.data = data;
-  ) 
-
+  }
+   
   confirm() {
     this.dialogRef.close(true);
   }

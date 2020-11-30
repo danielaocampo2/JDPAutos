@@ -16,6 +16,7 @@ import {OwnerRefreshTokenComponent} from './components/owner-refresh-token/owner
 import { AuthGuard } from './guards/auth.guard'; // pongalo en las rutas que quiera proteger
 import { SupervisorGuard } from './guards/supervisor.guard'; // pongalo en las rutas que quiera proteger
 import { AdminGuard } from './guards/admin.guard'; // pongalo en las rutas que quiera proteger
+import { EmpleadoGuard } from './guards/empleado.guard'; // pongalo en las rutas que quiera proteger
 
 const routes: Routes = [
   //Ruta inicial
@@ -31,7 +32,7 @@ const routes: Routes = [
   { // necesita autenticación
     path:'private',
     component:PrivateTasksComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, EmpleadoGuard]
   },
   {
     path:'signup',
@@ -60,7 +61,7 @@ const routes: Routes = [
   { // necesita autenticación para registrar vehiculo
     path:'employee-update',
     component:EmployeeUpdateComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, EmpleadoGuard]
   },
   { // necesita autenticación para registrar vehiculo
     path:'refresh-token',

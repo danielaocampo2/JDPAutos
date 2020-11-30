@@ -10,7 +10,7 @@ export class EmpleadoGuard implements CanActivate {
 
   public canActivate() {
     let rol = localStorage.getItem('mirol');
-    if (rol) {
+    if (rol == undefined) {
       this.router.navigate(['/']); //Lo enviamos a la página que queramos
       return false;
     }

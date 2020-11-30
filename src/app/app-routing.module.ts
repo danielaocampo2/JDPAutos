@@ -11,6 +11,7 @@ import { OwnerRegisterComponent } from './components/owner-register/owner-regist
 import { OwnerSigninComponent } from "./components/owner-signin/owner-signin.component";
 import {RegisterVehicleComponent} from './components/register-vehicle/register-vehicle.component';
 import {EmployeeUpdateComponent} from './components/employee-update/employee-update.component';
+import {OwnerRefreshTokenComponent} from './components/owner-refresh-token/owner-refresh-token.component';
 
 import { AuthGuard } from './guards/auth.guard'; // pongalo en las rutas que quiera proteger
 import { SupervisorGuard } from './guards/supervisor.guard'; // pongalo en las rutas que quiera proteger
@@ -60,6 +61,11 @@ const routes: Routes = [
     path:'employee-update',
     component:EmployeeUpdateComponent,
     canActivate:[AuthGuard]
+  },
+  { // necesita autenticación para registrar vehiculo
+    path:'refresh-token',
+    component:OwnerRefreshTokenComponent,
+    canActivate: [AuthGuard,SupervisorGuard]
   }
 ];
 

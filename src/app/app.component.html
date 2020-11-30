@@ -22,9 +22,12 @@
                 </ng-container>
             
                 <ng-template #loggedIn>
-
+                    
                     <li class="nav-item" *ngIf="mirol()">
                         <a class="nav-link" routerLink="/employee-update" routerLinkActive="active">Actualizar datos</a>
+                    </li>
+                    <li class="nav-item" *ngIf="mirol() == 'Supervisor de taller'">
+                        <a class="nav-link" routerLink="/refresh-token" routerLinkActive="active">Refrescar token</a>
                     </li>
                     <li class="nav-item" *ngIf="mirol() == 'Supervisor de taller'">
                         <a class="nav-link" routerLink="/register-vehicle" routerLinkActive="active">Registrar Vehiculo</a>

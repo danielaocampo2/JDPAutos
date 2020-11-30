@@ -23,6 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { EmployeeUpdateComponent } from './components/employee-update/employee-update.component';
+import { OwnerRefreshTokenComponent } from './components/owner-refresh-token/owner-refresh-token.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EmployeeUpdateComponent } from './components/employee-update/employee-u
     OwnerSigninComponent,
     InfoDialogComponent,
     RegisterVehicleComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    OwnerRefreshTokenComponent
     
   ],
   imports: [

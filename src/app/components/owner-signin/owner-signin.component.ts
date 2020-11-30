@@ -55,7 +55,7 @@ export class OwnerSigninComponent implements OnInit {
     this.dialog.open(InfoDialogComponent, dialogConfig).afterClosed().subscribe((success) => {
   },
   (e) => {
-      console.error(e);
+      /* console.error(e); */
   });
   }
 }

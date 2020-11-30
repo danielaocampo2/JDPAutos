@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./info-dialog.component.css'],
 })
 export class InfoDialogComponent {
-
+  title = null;
   data = null;
   constructor(
     private readonly dialogRef: MatDialogRef<InfoDialogComponent>,

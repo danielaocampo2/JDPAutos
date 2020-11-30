@@ -22,7 +22,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 import { EmployeeUpdateComponent } from './components/employee-update/employee-update.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+
+import {ImageUploadModule} from 'angular2-image-upload';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,8 @@ import { EmployeeUpdateComponent } from './components/employee-update/employee-u
     OwnerSigninComponent,
     InfoDialogComponent,
     RegisterVehicleComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    UploadFileComponent
     
   ],
   imports: [
@@ -48,7 +53,10 @@ import { EmployeeUpdateComponent } from './components/employee-update/employee-u
     MatSliderModule,
     MatDialogModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    ImageUploadModule.forRoot()
+    
 
   ],
   providers: [

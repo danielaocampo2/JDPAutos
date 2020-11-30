@@ -6,6 +6,7 @@ import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { EmpleadoService } from '../../services/empleado.service';
+import {UploadFileComponent} from '../upload-file/upload-file.component';
 
 
 @Component({
@@ -35,7 +36,9 @@ export class EmployeeUpdateComponent implements OnInit {
   user = {
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    imgUrl:'',
+    role:''
   };
 
   constructor(
@@ -57,6 +60,8 @@ export class EmployeeUpdateComponent implements OnInit {
           this.user.name=res['users'][0]['name'];
           this.user.email=res['users'][0]['email'];
           this.user.phone=res['users'][0]['phone'];
+          this.user.imgUrl=res['users'][0]['imgUrl'];
+          this.user.role=res['users'][0]['role'];
         },
         err=>console.log("error al recibir empleado",this.userID) //err
       )

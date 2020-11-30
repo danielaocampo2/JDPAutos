@@ -22,8 +22,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 import { EmployeeUpdateComponent } from './components/employee-update/employee-update.component';
+
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+
+import {ImageUploadModule} from 'angular2-image-upload';
+
 import { OwnerRefreshTokenComponent } from './components/owner-refresh-token/owner-refresh-token.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +44,9 @@ import { OwnerRefreshTokenComponent } from './components/owner-refresh-token/own
     InfoDialogComponent,
     RegisterVehicleComponent,
     EmployeeUpdateComponent,
+    UploadFileComponent,
     OwnerRefreshTokenComponent
+
     
   ],
   imports: [
@@ -50,7 +59,10 @@ import { OwnerRefreshTokenComponent } from './components/owner-refresh-token/own
     MatSliderModule,
     MatDialogModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    ImageUploadModule.forRoot()
+    
 
   ],
   providers: [

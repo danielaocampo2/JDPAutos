@@ -15,8 +15,13 @@ export class InfoDialogComponent {
 
   ) {
     this.data = data;
+<<<<<<< HEAD
   }
    
+=======
+    } 
+
+>>>>>>> a6bda237c1eda64aa3609836a8b20ecf51e5b127
   confirm() {
     this.dialogRef.close(true);
   }

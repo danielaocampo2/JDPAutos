@@ -16,5 +16,10 @@ export class AppComponent {
     let mirol = localStorage.getItem('mirol');
     return mirol;
    }
+
+   public myId(){
+     let usuario = localStorage.getItem('myId')
+     return usuario;
+   }
    
 }

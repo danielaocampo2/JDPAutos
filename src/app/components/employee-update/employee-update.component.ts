@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
+import { EmpleadoService } from '../../services/empleado.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 export class EmployeeUpdateComponent implements OnInit {
   text = "Ese correo ya está asociado a otro empleado";
 
-  userID = 536;
+  userID=localStorage.getItem('myId');
 
   validatorGroup = new FormGroup({
     email: new FormControl('', [
@@ -39,10 +40,28 @@ export class EmployeeUpdateComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private empleadoService:EmpleadoService,
     private router:Router,
     private readonly dialog: MatDialog) { }
-
+    
   ngOnInit(): void {
+
+    this.empleadoService.getEmpleado(this.userID)
+      .subscribe(
+        res=>{
+          console.log("prueba empleado");
+          console.log(res['users'][0])
+          /* console.log(res.users[0].name);
+          console.log(res, "entro a private task");
+          this.tasks=res.users; */
+          this.user.name=res['users'][0]['name'];
+          this.user.email=res['users'][0]['email'];
+          this.user.phone=res['users'][0]['phone'];
+        },
+        err=>console.log("error al recibir empleado",this.userID) //err
+      )
+
+    
   }
 
   get primEmail() {
@@ -59,13 +78,17 @@ export class EmployeeUpdateComponent implements OnInit {
 
   onSubmit() {
     //console.log(this.user);
-    this.authService.update(this.user, this.userID)
+    
+    
+
+    this.empleadoService.update(this.user, this.userID)
     // la respuesta que me da el servidor
       .subscribe(
         res =>{
           // guarde token en el local storage
           localStorage.setItem('token', res.token);
           this.router.navigate(['/private']);
+          
         },
         err => this.openDialog() //err
         

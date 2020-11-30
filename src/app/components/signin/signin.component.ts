@@ -28,8 +28,9 @@ export class SigninComponent implements OnInit {
           //console.log(res);
           if(res.message=="accedido"){
           this.error=false;
-          localStorage.setItem('mirol', res.role)
-          localStorage.setItem('token', res.token)
+          localStorage.setItem('mirol', res.role);
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('myId',res.id);
           this.router.navigate(['/private']);
 
         }

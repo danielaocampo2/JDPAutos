@@ -7,7 +7,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./info-dialog.component.css'],
 })
 export class InfoDialogComponent {
-  title = null;
   data = null;
   constructor(
     private readonly dialogRef: MatDialogRef<InfoDialogComponent>,
@@ -15,7 +14,7 @@ export class InfoDialogComponent {
     @Inject(MAT_DIALOG_DATA) data
   ) { 
     this.data=data;
-    console.log(this.data["msg"]);
+    /* console.log(this.data); */
   }
 
 confirm(){

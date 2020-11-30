@@ -42,14 +42,17 @@ export class OwnerRefreshTokenComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.minWidth = '350px';
     dialogConfig.maxWidth = '600px';
+    let carita = errors == 'Fecha de caducidad del token actualizada'? ":)": ":(";
+
     dialogConfig.data = {
-      msg: errors,
+      title: carita,
+      msg: errors
     };
 
     this.dialog.open(InfoDialogComponent, dialogConfig).afterClosed().subscribe((success) => {
     },
       (e) => {
-        console.error(e);
+        /* console.error(e); */
       });
   }
 

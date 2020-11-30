@@ -48,14 +48,14 @@ export class OwnerSigninComponent implements OnInit {
     dialogConfig.minWidth = '350px';
     dialogConfig.maxWidth = '600px'; 
     dialogConfig.data = {
-      
+      title: ":(",
       msg: errors.error.message,
     };
 
     this.dialog.open(InfoDialogComponent, dialogConfig).afterClosed().subscribe((success) => {
   },
   (e) => {
-      /* console.error(e); */
+       console.error(e); 
   });
   }
 }

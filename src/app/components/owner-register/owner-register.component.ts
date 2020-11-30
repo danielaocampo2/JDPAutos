@@ -101,6 +101,7 @@ export class OwnerRegisterComponent implements OnInit {
     dialogConfig.maxWidth = '600px';
 
     dialogConfig.data = {
+      title: ":(",
       msg: "El usuario ya existe",
     };
 

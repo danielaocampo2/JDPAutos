@@ -12,9 +12,10 @@ export class InfoDialogComponent {
     private readonly dialogRef: MatDialogRef<InfoDialogComponent>,
 
     @Inject(MAT_DIALOG_DATA) data
+
   ) {
     this.data = data;
-  }
+  ) 
 
   confirm() {
     this.dialogRef.close(true);

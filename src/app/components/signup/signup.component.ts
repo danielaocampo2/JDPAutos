@@ -105,6 +105,7 @@ export class SignupComponent implements OnInit {
     dialogConfig.maxWidth = '600px';
 
     dialogConfig.data = {
+      title: ":(",
       msg: this.text,
     };
 

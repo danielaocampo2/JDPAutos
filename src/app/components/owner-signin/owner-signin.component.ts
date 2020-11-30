@@ -46,6 +46,7 @@ export class OwnerSigninComponent implements OnInit {
     dialogConfig.minWidth = '350px';
     dialogConfig.maxWidth = '600px'; 
     dialogConfig.data = {
+
       msg: errors.error.message,
     };
 
@@ -53,6 +54,7 @@ export class OwnerSigninComponent implements OnInit {
   },
   (e) => {
       console.error(e);
+
   });
   }
 }

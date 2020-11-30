@@ -52,11 +52,6 @@ export class EmployeeUpdateComponent implements OnInit {
     this.empleadoService.getEmpleado(this.userID)
       .subscribe(
         res=>{
-          console.log("prueba empleado");
-          console.log(res['users'][0])
-          /* console.log(res.users[0].name);
-          console.log(res, "entro a private task");
-          this.tasks=res.users; */
           this.user.name=res['users'][0]['name'];
           this.user.email=res['users'][0]['email'];
           this.user.phone=res['users'][0]['phone'];
@@ -65,8 +60,6 @@ export class EmployeeUpdateComponent implements OnInit {
         },
         err=>console.log("error al recibir empleado",this.userID) //err
       )
-
-    
   }
 
   get primEmail() {
@@ -82,10 +75,6 @@ export class EmployeeUpdateComponent implements OnInit {
   }
 
   onSubmit() {
-    //console.log(this.user);
-    
-    
-
     this.empleadoService.update(this.user, this.userID)
     // la respuesta que me da el servidor
       .subscribe(

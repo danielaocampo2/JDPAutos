@@ -24,9 +24,13 @@ import { RegisterVehicleComponent } from './components/register-vehicle/register
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { EmployeeUpdateComponent } from './components/employee-update/employee-update.component';
+
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 import {ImageUploadModule} from 'angular2-image-upload';
+
+import { OwnerRefreshTokenComponent } from './components/owner-refresh-token/owner-refresh-token.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +44,9 @@ import {ImageUploadModule} from 'angular2-image-upload';
     InfoDialogComponent,
     RegisterVehicleComponent,
     EmployeeUpdateComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    OwnerRefreshTokenComponent
+
     
   ],
   imports: [

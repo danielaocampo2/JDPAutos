@@ -15,6 +15,9 @@ export class OwnerService {
   signIn(owner){
     return this.http.post<any>(this.URL + '/auth/logintoken', owner);
   }
+  refreshToken(email){
+    return this.http.post<any>(this.URL + '/owner/refreshToken', email);
+  }
   loggedIn() {
     //if(localStorage.getItem('token')){
       //return true;

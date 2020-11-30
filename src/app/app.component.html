@@ -32,6 +32,7 @@
                     <li class="nav-item" *ngIf="mirol() == 'Supervisor de taller'">
                         <a class="nav-link" routerLink="/owner-register" routerLinkActive="active">Registrar Propietario</a>
                     </li>
+                    
                     <li class="nav-item" *ngIf="mirol() == 'admin'">
                         <a class="nav-link" routerLink="/signup" routerLinkActive="active">Registrar Empleado</a>
                     </li>
@@ -41,6 +42,7 @@
                 </ng-template>
 
             </ul>
+            {{myId()}}
         </div>
     </div>
 </nav>

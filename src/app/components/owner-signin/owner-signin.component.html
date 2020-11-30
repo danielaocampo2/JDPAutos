@@ -2,7 +2,7 @@
     <div class="col-md-4 mx-auto">
         <div class="card">
             <div class="card-header">
-                SignIn
+                Iniciar sesión
             </div>
             <div class="card-body">
                 <form (submit)="signIn()">
@@ -11,14 +11,14 @@
                         <input type="text" [(ngModel)]="owner.email" name="email" class="form-control" placeholder="Ingresa el correo" required autofocus>
                     </div> -->
                     <div class="form-group">
-                        <label for="token">token:</label>
+                        <label for="token">Token:</label>
                         <input type="text" [(ngModel)]="owner.token" name="token" class="form-control" placeholder="Ingresa el Token" required>
                     </div>
-                    <button  mat-stroked-button color="primary" type="submit" class="btn btn-primary btn-block">
-                      SignIn
+                    <button  type="submit" class="btn btn-primary btn-block">
+                      Iniciar sesión
                   </button>
                   
-                    <label *ngIf="error" style="color:red; text-align: center;"> Verifique usuario y contraseña</label>
+                    <label *ngIf="error" style="color:red; text-align: center;"> Ingrese un token</label>
                 </form>
             </div>
         </div>

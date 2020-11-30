@@ -2,7 +2,7 @@
     <div class="col-md-4 mx-auto">
         <div class="card">
             <div class="card-header">
-                SignUp
+                Registro de propietarios
             </div>
             <div class="card-body">
                 <form (submit)="submit()"  [formGroup]="validatorGroup">
@@ -38,12 +38,12 @@
                     </div>
                    
                     <div class="form-group">
-                        <label for="email">Email:</label>
+                        <label for="email">Correo:</label>
                         <input [class.is-invalid] = "validatorGroup.get('email').invalid && validatorGroup.get('email').touched" type="email" [(ngModel)]="owner.email" name="email" class="form-control" placeholder="Correo" formControlName="email">
                         <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
-                            <small *ngIf="primEmail.errors?.required" class="text-danger">El Email es requerido</small>
+                            <small *ngIf="primEmail.errors?.required" class="text-danger">El correo es requerido</small>
                             <!--question mark(?) is a safe navigation operator-->
-                            <small *ngIf="primEmail.errors?.pattern" class="text-danger">Por favor ingresa un Email correcto</small>
+                            <small *ngIf="primEmail.errors?.pattern" class="text-danger">Por favor ingresa un correo correcto</small>
                           </div>
                     </div>
                   

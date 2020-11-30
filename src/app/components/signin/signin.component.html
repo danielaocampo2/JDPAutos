@@ -2,20 +2,20 @@
     <div class="col-md-4 mx-auto">
         <div class="card">
             <div class="card-header">
-                SignIn
+                Iniciar sesión
             </div>
             <div class="card-body">
                 <form (submit)="signIn()">
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Enter email" required autofocus>
+                        <label for="email">Correo:</label>
+                        <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Ingrese el correo" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Enter password" required>
+                        <label for="password">Contraseña:</label>
+                        <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Ingrese la contraseña" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">
-                      SignIn
+                      Iniciar sesión
                   </button>
                     <label *ngIf="error" style="color:red; text-align: center;"> Verifique usuario y contraseña</label>
                 </form>

@@ -30,6 +30,7 @@ export class UploadFileComponent implements OnInit {
         name: this.image.name
       }).subscribe((d) => {
         console.log(d);
+        window.location.reload();
       })
     }
   }

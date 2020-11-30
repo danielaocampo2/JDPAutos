@@ -15,9 +15,6 @@ export class PrivateTasksComponent implements OnInit {
     this.tasksService.getPrivateTasks()
       .subscribe(
         res=>{
-          console.log("prueba2");
-          console.log(res.users[0].name);
-          console.log(res, "entro a private task");
           this.tasks=res.users;
         },
         err=>console.log("error") //err

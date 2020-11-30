@@ -22,7 +22,6 @@ export class OwnerRefreshTokenComponent implements OnInit {
 
     this.ownerService.refreshToken(this.owner).subscribe(
       (res) => {
-        //console.log(res);
         if (res.message == 'Fecha de caducidad del token actualizada') {
           this.openDialog(res.message);
           this.error = true;

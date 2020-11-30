@@ -14,7 +14,6 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 export class OwnerSigninComponent implements OnInit {
   text = "El token ha caducado"
   owner = {
-    // email: '',
     token: ''
   };
   error = false;
@@ -25,7 +24,6 @@ export class OwnerSigninComponent implements OnInit {
   signIn() {
     this.ownerService.signIn(this.owner).subscribe(
       (res) => {
-        //console.log(res);
         if (res.message == 'accedido') {
           this.error = false;
           localStorage.setItem('token', res.token);
@@ -48,14 +46,13 @@ export class OwnerSigninComponent implements OnInit {
     dialogConfig.minWidth = '350px';
     dialogConfig.maxWidth = '600px'; 
     dialogConfig.data = {
-      
       msg: errors.error.message,
     };
 
     this.dialog.open(InfoDialogComponent, dialogConfig).afterClosed().subscribe((success) => {
   },
   (e) => {
-      /* console.error(e); */
+      console.error(e);
   });
   }
 }

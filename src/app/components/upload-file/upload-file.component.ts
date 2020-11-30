@@ -31,7 +31,6 @@ export class UploadFileComponent implements OnInit {
       }).subscribe((d) => {
         console.log(d);
       })
-      window.location.reload();
     }
   }
 

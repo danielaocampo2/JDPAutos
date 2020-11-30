@@ -24,10 +24,6 @@ export class SignupComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^[0-9]{1,11}$/),
     ]),
-    /*placa: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^([A-Z]{3}[0-9]{3})?$/),
-    ]),*/
     name: new FormControl('', [
       Validators.required
     ]),
@@ -91,12 +87,10 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    //console.log(this.user);
     this.authService.signUp(this.user)
     // la respuesta que me da el servidor
       .subscribe(
         res =>{
-         //console.log(res)
           // guarde token en el local storage
           localStorage.setItem('token', res.token);
           this.router.navigate(['/private']);

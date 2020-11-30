@@ -22,10 +22,6 @@ export class OwnerRegisterComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^-?(0|[1-9]\d*)?$/),
     ]),
-     /*placa: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^([A-Z]{3}[0-9]{3})?$/),
-    ]),*/
     numberCC: new FormControl('', [
       Validators.required,
       Validators.pattern(/^[0-9]{1,11}$/),
@@ -38,10 +34,8 @@ export class OwnerRegisterComponent implements OnInit {
   owner = {
     id_owner:'',
     name: '',
-    //surname: '',
     email: '',
-    phone: '',
-    //password:''
+    phone: ''
   };
 
   constructor(private ownerService: OwnerService, private router: Router, private readonly dialog: MatDialog) {}
@@ -80,7 +74,6 @@ export class OwnerRegisterComponent implements OnInit {
         (res) => {
             localStorage.setItem('token', res.token);
             this.router.navigate(['/private']);
-            console.log("Hola");
           // guarde token en el local storage
         },
         (err) => {
@@ -99,7 +92,6 @@ export class OwnerRegisterComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.minWidth = '350px';
     dialogConfig.maxWidth = '600px';
-
     dialogConfig.data = {
       title: ":(",
       msg: "El usuario ya existe",

@@ -21,5 +21,9 @@ export class AppComponent {
      let usuario = localStorage.getItem('myId')
      return usuario;
    }
+   public myname(){
+    let nombre = localStorage.getItem('name')
+    return nombre;
+  }
    
 }

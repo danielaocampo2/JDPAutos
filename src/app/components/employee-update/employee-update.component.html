@@ -1,62 +1,19 @@
-<!-- <div class="row">
-    <div class="col-md-4 mx-auto">
-        <div class="card">
-            <div class="card-header">
 
-                Actualizar mis Datos
-
-            </div>
-            <div class="card-body">
-                <form (submit)="onSubmit()" [formGroup]="validatorGroup">
-                    <div class="form-group">
-                        <label for="name">Nombre:</label>
-                        <input disabled="true" [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched" type="text" [(ngModel)]="user.name" name="name" class="form-control" placeholder="Nombre" formControlName="name" autofocus>
-                        <div *ngIf="(name.invalid && name.touched) || name.dirty">
-                            <small *ngIf="name.errors?.required" class="text-danger">El nombre es requerido</small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo:</label>
-                        <input [class.is-invalid]="validatorGroup.get('email').invalid && validatorGroup.get('email').touched" type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Correo" formControlName="email" >
-                        <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
-                            <small *ngIf="primEmail.errors?.required" class="text-danger">El Correo es requerido</small>
-                            
-                            <small *ngIf="primEmail.errors?.pattern" class="text-danger">Por favor ingresa un Correo correcto</small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefono:</label>
-                        <input [class.is-invalid] = "validatorGroup.get('phone').invalid && validatorGroup.get('phone').touched" type="text" [(ngModel)]="user.phone"  class="form-control" placeholder="Telefono" formControlName="phone">
-                        <div *ngIf="(phone.invalid && phone.touched) || phone.dirty">
-                            <small *ngIf="phone.errors?.required" class="text-danger">El telefono es requerido</small>
-                            
-                            <small *ngIf="phone.errors?.pattern" class="text-danger">Por favor, ingresa un telefono correcto</small>
-                          </div>
-                    </div>
-                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
-                        Actualizar
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<mat-grid-list cols="3" rowHeight="500px"> 
+<mat-grid-list cols="4" rowHeight="500px"> 
     
     <mat-grid-tile
         
-        [colspan]="1"
+        [colspan]="2"
         [rowspan]="1"
-        [style.background]="'wheat'">
-        
-        <div class="card">
-            <div class="card-header">
+        [style.background]="'#666'">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>Actualizar mis Datos</mat-card-title>
+              <mat-card-subtitle>Modifica tus datos aquí</mat-card-subtitle>
+            </mat-card-header>
 
-                Actualizar mis Datos
-
-            </div>
-            <div class="card-body">
+            <mat-card-content>
                 <form (submit)="onSubmit()" [formGroup]="validatorGroup">
                     <div class="form-group">
                         <label for="name">Nombre:</label>
@@ -83,26 +40,35 @@
                             <small *ngIf="phone.errors?.pattern" class="text-danger">Por favor, ingresa un telefono correcto</small>
                           </div>
                     </div>
-                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
+                    <button type="submit" [disabled]="validatorGroup.invalid" mat-raised-button color="primary">
                         Actualizar
                     </button>
                 </form>
-            </div>
-        </div>
+                
+              </mat-card-content>
+        </mat-card>
+        
     </mat-grid-tile>
-    
     <mat-grid-tile
         
         [colspan]="1"
         [rowspan]="1"
-        [style.background]="'wheat'">
+        [style.background]="">
+        
+        <app-upload-file></app-upload-file> 
+    </mat-grid-tile>
+    <mat-grid-tile
+        
+        [colspan]="1"
+        [rowspan]="1"
+        [style.background]="''">
         <mat-card class="example-card">
             <mat-card-header>
               <div mat-card-avatar class="example-header-image"></div>
               <mat-card-title>{{user.name}}</mat-card-title>
               <mat-card-subtitle>{{user.role}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{user.imgUrl}}" alt="Foto de perfil">
+            <img class="imgRedonda" mat-card-image src="{{user.imgUrl}}" alt="Foto de perfil">
             <mat-card-content>
               <p>
                Mi Correo:{{user.email}}
@@ -117,16 +83,6 @@
     </mat-grid-tile>
     
   </mat-grid-list>
-<br>
-  <mat-grid-list cols="1" rowHeight="200px"> 
-    
-    <mat-grid-tile
-        
-        [colspan]="1"
-        [rowspan]="1"
-        [style.background]="'wheat'">
-        
-        <app-upload-file></app-upload-file> 
-    </mat-grid-tile>
-    </mat-grid-list> 
+
+  
   

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '@angular/material/prebuilt-themes/purple-green.css';
 
 body {
     margin: 0;
@@ -9,9 +9,21 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
   }
+.imgRedonda{
+ 
+    width:300px;
+    height:300px;
+    border-radius:150px;
+    border:10px solid #666;
 
+}
+
+.img-ul-button{
+  color:black
+}
   .prueba{
       background-color: aquamarine;
+      
 
   }
 html, body { height: 100%; }

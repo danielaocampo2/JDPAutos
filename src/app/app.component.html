@@ -1,6 +1,6 @@
-<nav class=" prueba navbar navbar-expand-lg navbar-light bg-light">
+<nav class=" navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
     <div class="container">
-        <a class="navbar-brand" routerLink="/">JDP Autos</a>
+        <a class="navbar-brand" routerLink="/"><img class="milogo"src="./assets/images/logo2.png" alt="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -45,11 +45,35 @@
                 </ng-template>
 
             </ul>
-            {{myId()}}
+            
         </div>
     </div>
 </nav>
-<mat-grid-list cols="4" rowHeight="100px" *ngIf="!authService.loggedIn()"> 
+<mat-grid-list cols="4" rowHeight="100px" *ngIf="authService.loggedIn()"> 
+    <mat-grid-tile
+        
+        [colspan]="3"
+        [rowspan]="1"
+        [style.background]="">
+      
+    </mat-grid-tile>
+    <mat-grid-tile
+        
+        [colspan]="1"
+        [rowspan]="1"
+        [style.background]="">
+        <div class="alert alert-info" role="alert">
+            {{mirol()}}!
+          </div>
+        
+      
+    </mat-grid-tile>
+    
+</mat-grid-list>
+
+
+<br>
+<mat-grid-list cols="4" rowHeight="80px" *ngIf="!authService.loggedIn()"> 
     <mat-grid-tile
         
         [colspan]="1"
@@ -61,17 +85,19 @@
         
         [colspan]="1"
         [rowspan]="1"
-        [style.background]="'wheat'">
-        <a class="nav-link" routerLink="/signin" routerLinkActive="active">AREA DE EMPLEADOS !</a>
+        [style.background]="'#666'">
+        <a class="nav-link" routerLink="/signin"  [style.color]="'white'" routerLinkActive="active">AREA DE EMPLEADOS !</a>
     </mat-grid-tile>
     <mat-grid-tile
         
         [colspan]="1"
         [rowspan]="1"
-        [style.background]="'lightblue'">
-        <a class="nav-link" routerLink="/owner-signin" routerLinkActive="active">AREA DE CLIENTES !</a>
+        
+        [style.background]="'#9D61FF'">
+        <a class="nav-link" routerLink="/owner-signin" [style.color]="'white'" routerLinkActive="active">AREA DE CLIENTES !</a>
        
     </mat-grid-tile>
+    
     <mat-grid-tile
         
         [colspan]="1"

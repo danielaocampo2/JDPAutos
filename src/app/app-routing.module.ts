@@ -17,6 +17,7 @@ import { AuthGuard } from './guards/auth.guard'; // pongalo en las rutas que qui
 import { SupervisorGuard } from './guards/supervisor.guard'; // pongalo en las rutas que quiera proteger
 import { AdminGuard } from './guards/admin.guard'; // pongalo en las rutas que quiera proteger
 import { EmpleadoGuard } from './guards/empleado.guard'; // pongalo en las rutas que quiera proteger
+import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
 
 const routes: Routes = [
   //Ruta inicial
@@ -52,7 +53,11 @@ const routes: Routes = [
     path:'owner-signin',
     component:OwnerSigninComponent
   },
-
+  { 
+    path:'change-password',
+    component: CambiarPasswordComponent
+  },
+ 
   { // necesita autenticación para registrar vehiculo
     path:'register-vehicle',
     component:RegisterVehicleComponent,

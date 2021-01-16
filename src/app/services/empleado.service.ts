@@ -15,9 +15,18 @@ export class EmpleadoService {
     return this.http.get<any>(this.URL + '/user/id_user/'+userId); // devuelve un observable
   }
   
-
+  getEmpleado2(email){
+    return this.http.get<any>(this.URL + '/user/email/'+email); // devuelve un observable
+  }
   update(user, userID){
     return this.http.put<any>(this.URL + '/user/id_user/'+ userID, user);
   }
-  
+
+  correoRecuperarContraseña(email) {
+    return this.http.post<any>(this.URL + '/user/password/recuperar', email);
+  }
+
+  cambiarContraseña(datos,id) {
+    return this.http.put<any>(this.URL + '/user/password/id_user/'+id, datos);
+  }
 }

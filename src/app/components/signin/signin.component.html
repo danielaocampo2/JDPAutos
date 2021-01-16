@@ -18,6 +18,10 @@
                       Iniciar sesión
                   </button>
                     <label *ngIf="error" style="color:red; text-align: center;"> Verifique usuario y contraseña</label>
+
+                    <a class="center" [routerLink]="['/change-password']">
+                        Olvidé mi contraseña
+                    </a>
                 </form>
             </div>
         </div>

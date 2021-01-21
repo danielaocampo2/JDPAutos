@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Agregar Reparación
+            </div>
+            <div class="card-body">
+                <form (submit)="onSubmit()" [formGroup]="validatorGroup">
+                    <div class="form-group">
+                        <label for="name">Placa:</label>
+                        <input [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched" type="text" [(ngModel)]="reparacion.placa" name="placa" class="form-control" placeholder="Placa" formControlName="name" autofocus>
+                        <div *ngIf="(name.invalid && name.touched) || name.dirty">
+                            <small *ngIf="name.errors?.required" class="text-danger">El nombre es requerido</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cc">Precio:</label>
+                        <input [class.is-invalid]="validatorGroup.get('number').invalid && validatorGroup.get('number').touched" type="text" [(ngModel)]="reparacion.precio" name="precio" class="form-control" placeholder="Precio" formControlName="number">
+                        <div *ngIf="(justNumber.invalid && justNumber.touched) || justNumber.dirty">
+                            <small *ngIf="justNumber.errors?.required" class="text-danger">El precio es requerido</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="justNumber.errors?.pattern" class="text-danger">Por favor, ingresa un precio correcto</small>
+                        </div>
+                    </div>  
+                    <div class="form-group">
+                        <label for="cc">Precio:</label>
+                        <input type="text" [(ngModel)]="reparacion.detalles" name="detalles" class="form-control" placeholder="Detalles" formControlName="number">
+                    </div>  
+
+           
+                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
+                        SignUp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

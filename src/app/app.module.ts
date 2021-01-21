@@ -31,6 +31,8 @@ import {ImageUploadModule} from 'angular2-image-upload';
 
 import { OwnerRefreshTokenComponent } from './components/owner-refresh-token/owner-refresh-token.component';
 import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
+import { VehicleComponent } from './components/vehicle/vehicle.component';
+import { RepairComponent } from './components/repair/repair.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-
     EmployeeUpdateComponent,
     UploadFileComponent,
     OwnerRefreshTokenComponent,
-    CambiarPasswordComponent
+    CambiarPasswordComponent,
+    VehicleComponent,
+    RepairComponent
 
     
   ],

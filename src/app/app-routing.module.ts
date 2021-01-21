@@ -12,6 +12,7 @@ import { OwnerSigninComponent } from "./components/owner-signin/owner-signin.com
 import {RegisterVehicleComponent} from './components/register-vehicle/register-vehicle.component';
 import {EmployeeUpdateComponent} from './components/employee-update/employee-update.component';
 import {OwnerRefreshTokenComponent} from './components/owner-refresh-token/owner-refresh-token.component';
+import {RepairComponent} from "./components/repair/repair.component";
 
 import { AuthGuard } from './guards/auth.guard'; // pongalo en las rutas que quiera proteger
 import { SupervisorGuard } from './guards/supervisor.guard'; // pongalo en las rutas que quiera proteger
@@ -72,6 +73,11 @@ const routes: Routes = [
     path:'refresh-token',
     component:OwnerRefreshTokenComponent,
     canActivate: [AuthGuard,SupervisorGuard]
+  },
+  {
+    path:'create-repair',
+    component:RepairComponent,
+    canActivate: [AuthGuard, SupervisorGuard]
   }
 ];
 

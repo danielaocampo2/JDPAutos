@@ -1,1 +1,26 @@
-<p>vehicle works!</p>
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Consultar vehiculo por placa
+            </div>
+            <div class="card-body">
+                <form (submit)="signIn()">
+                    <!-- <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" [(ngModel)]="owner.email" name="email" class="form-control" placeholder="Ingresa el correo" required autofocus>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="token">Placa:</label>
+                        <input type="text" [(ngModel)]="vehicle.placa" name="placa" class="form-control" placeholder="Ingresa la placa" required>
+                    </div>
+                    <button  type="submit" class="btn btn-primary btn-block">
+                      Consultar
+                  </button>
+                  
+                    <label *ngIf="error" style="color:red; text-align: center;"> Ingrese un token</label>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

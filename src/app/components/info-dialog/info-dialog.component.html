@@ -4,7 +4,7 @@
 
 <mat-dialog-content class="row">
 
-    <h1>{{data.msg}}
+    <h1 [innerHTML]="data.msg">{{data.msg}}
     </h1>
 
     <button (click)="confirm()">Cerrar</button>

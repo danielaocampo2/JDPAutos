@@ -13,6 +13,7 @@ import {RegisterVehicleComponent} from './components/register-vehicle/register-v
 import {EmployeeUpdateComponent} from './components/employee-update/employee-update.component';
 import {OwnerRefreshTokenComponent} from './components/owner-refresh-token/owner-refresh-token.component';
 import {RepairComponent} from "./components/repair/repair.component";
+import { VehicleComponent } from "./components/vehicle/vehicle.component";
 
 import { AuthGuard } from './guards/auth.guard'; // pongalo en las rutas que quiera proteger
 import { SupervisorGuard } from './guards/supervisor.guard'; // pongalo en las rutas que quiera proteger
@@ -78,6 +79,11 @@ const routes: Routes = [
     path:'create-repair',
     component:RepairComponent,
     canActivate: [AuthGuard, SupervisorGuard]
+  },
+  {
+    path:'vehicle',
+    component: VehicleComponent,
+    //canActivate: [AuthGuard, SupervisorGuard]
   }
 ];
 

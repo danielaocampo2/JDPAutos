@@ -83,7 +83,7 @@ const routes: Routes = [
   {
     path:'vehicle',
     component: VehicleComponent,
-    //canActivate: [AuthGuard, SupervisorGuard]
+    canActivate: [AuthGuard, SupervisorGuard]
   }
 ];
 

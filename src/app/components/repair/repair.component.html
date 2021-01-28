@@ -8,23 +8,32 @@
                 <form (submit)="onSubmit()" [formGroup]="validatorGroup">
                     <div class="form-group">
                         <label for="name">Placa:</label>
-                        <input [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched" type="text" [(ngModel)]="reparacion.placa" name="placa" class="form-control" placeholder="Placa" formControlName="name" autofocus>
+                        <input
+                            [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched"
+                            type="text" [(ngModel)]="reparacion.placa" name="placa" class="form-control"
+                            placeholder="Placa" formControlName="name" autofocus>
                         <div *ngIf="(name.invalid && name.touched) || name.dirty">
-                            <small *ngIf="name.errors?.required" class="text-danger">El nombre es requerido</small>
+                            <small *ngIf="name.errors?.required" class="text-danger">La placa es requerida</small>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="cc">Precio:</label>
-                        <input [class.is-invalid]="validatorGroup.get('number').invalid && validatorGroup.get('number').touched" type="text" [(ngModel)]="reparacion.precio" name="precio" class="form-control" placeholder="Precio" formControlName="number">
+                        <input
+                            [class.is-invalid]="validatorGroup.get('number').invalid && validatorGroup.get('number').touched"
+                            type="text" [(ngModel)]="reparacion.precio" name="precio" class="form-control"
+                            placeholder="Precio" formControlName="number">
                         <div *ngIf="(justNumber.invalid && justNumber.touched) || justNumber.dirty">
-                            <small *ngIf="justNumber.errors?.required" class="text-danger">El precio es requerido</small>
+                            <small *ngIf="justNumber.errors?.required" class="text-danger">El precio es
+                                requerido</small>
                             <!--question mark(?) is a safe navigation operator-->
-                            <small *ngIf="justNumber.errors?.pattern" class="text-danger">Por favor, ingresa un precio correcto</small>
+                            <small *ngIf="justNumber.errors?.pattern" class="text-danger">Por favor, ingresa un precio
+                                correcto</small>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="cc">Precio:</label>
-                        <input type="text" [(ngModel)]="reparacion.detalles" name="detalles" class="form-control" placeholder="Detalles" formControlName="number">
+                        <input type="text" [(ngModel)]="reparacion.detalles" name="detalles" class="form-control"
+                            placeholder="Detalles" formControlName="number">
                     </div>
 
 
@@ -34,5 +43,57 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Editar Reparación
+            </div>
+            <div class="card-body">
+                <form (submit)="buscarReparaciones()" [formGroup]="validadorPlaca">
+                    <div class="form-group">
+                        <label for="name">Placa:</label>
+                        <input
+                            [class.is-invalid]="validadorPlaca.get('placaCampo').invalid && validadorPlaca.get('placaCampo').touched"
+                            type="text" [(ngModel)]="placaEditar" name="placa" class="form-control" placeholder="Placa"
+                            formControlName="placaCampo" autofocus>
+                        <div *ngIf="(placaCampo.invalid && placaCampo.touched) || placaCampo.dirty">
+                            <small *ngIf="placaCampo.errors?.required" class="text-danger">La placa es requerida</small>
+                        </div>
+                    </div>
+                    <button type="submit" [disabled]="validadorPlaca.invalid" class="btn btn-primary btn-block">
+                        Buscar reparaciones
+                    </button>
+                </form>
+            </div>
+
+        </div>
+        <ng-template [ngIf]="reparaciones.length > 0">
+            <div class="card">
+                <mat-paginator (page)="onPageChange($event)" [length]="reparaciones.length" [pageSize]="1"
+                    [pageSizeOptions]="[1]">
+                </mat-paginator>
+                <div class="card-body" *ngFor="let reparacion of repaMostrar">
+                    <b>Estado: </b>
+                    <select name="type" class="form-control" #estado>
+                        <option>{{reparacion.estado}}</option>
+                        <option>{{reparacion.estado == "Finalizado"? "En curso": "Finalizado"}}</option>
+                    </select>
+                    <p></p><b>Precio: </b> <input class="form-control" #precio name="precio"
+                        value="{{reparacion.precio}}">
+                    <p></p>
+                    <b>Detalles: </b> <input class="form-control" #detalles name="detalles"
+                        value="{{reparacion.detalles}}">
+                    <p></p>
+                    <button type="submit" color="elegant" class="btn btn-primary" style="background-color:#008cba"
+                        (click)="actualizarReparacion(reparacion._id,estado.value,precio.value,detalles.value)">
+                        Actualizar Reparación
+                    </button>
+                </div>
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [(pageSize)]="pagesize" [rotate]="true">
+                </ngb-pagination>
+            </div>
+        </ng-template>
     </div>
 </div>

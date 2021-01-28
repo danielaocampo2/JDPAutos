@@ -13,7 +13,7 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 })
 export class RepairComponent implements OnInit {
 
-  text = "no existe el carro en la DB";
+  text = "";
 
   validatorGroup = new FormGroup({
     number: new FormControl('', [
@@ -25,12 +25,26 @@ export class RepairComponent implements OnInit {
     ])
   });
 
+  validadorPlaca = new FormGroup({
+    placaCampo: new FormControl('', [
+      Validators.required,
+    ])
+  });
+  placaEditar = ''
+
+  datos = {
+    estado: "",
+    detalles: "",
+    precio: ""
+  }
   reparacion = {
     placa: '',
     precio: '',
     detalles: ''
   };
 
+  reparaciones = []
+  repaMostrar = []
   constructor(
     private repairService: RepairService,
     private router:Router,
@@ -47,18 +61,67 @@ export class RepairComponent implements OnInit {
     return this.validatorGroup.get('number');
   }
 
+  get placaCampo() {
+    return this.validadorPlaca.get('placaCampo');
+  }
   onSubmit() {
     this.repairService.create(this.reparacion)
     // la respuesta que me da el servidor
       .subscribe(
         res =>{
           // guarde token en el local storage
-          this.router.navigate(['/private']);
+          this.reparacion.detalles = '';
+          this.reparacion.placa = '';
+          this.reparacion.precio = '';
+          this.text = res.message; 
+          this.openDialog()
         },
         err => this.openDialog() //err
     )
   }
 
+  buscarReparaciones(){
+    this.repairService.getReparaciones(this.placaEditar)
+    // la respuesta que me da el servidor
+      .subscribe(
+        res =>{
+          this.repaMostrar = []
+          this.reparaciones = []
+          // guarde token en el local storage
+          this.reparaciones = res.rreparations;
+          this.repaMostrar.push(this.reparaciones[0])
+        },
+        err => {
+          this.text = err.error.message; 
+          this.repaMostrar = []
+          this.reparaciones = []
+          this.openDialog() }//err
+    )
+  }
+
+  actualizarReparacion(id,estado,precio,detalles){
+    this.datos.detalles = detalles;
+    this.datos.estado = estado;
+    this.datos.precio = precio;
+
+    this.repairService.editarReparacion(id,this.datos)
+    // la respuesta que me da el servidor
+      .subscribe(
+        res =>{
+          // guarde token en el local storage
+             this.buscarReparaciones()
+             this.text = res.message; 
+             this.openDialog()
+        },
+        err => {
+          this.text = err.error.message; 
+          this.openDialog() }//err
+    )
+    
+  }
+  onPageChange($event) {
+    this.repaMostrar =  this.reparaciones.slice($event.pageIndex*$event.pageSize, $event.pageIndex*$event.pageSize + $event.pageSize);
+  }
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();

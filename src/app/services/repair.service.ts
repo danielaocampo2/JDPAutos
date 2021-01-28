@@ -10,11 +10,14 @@ export class RepairService {
   constructor(private http: HttpClient, private router: Router) { }
 
   create(reparation) {
-    console.log(reparation);
     return this.http.post<any>(this.URL + '/reparation/create', reparation); // devuelve un observable
   }
-  signIn(reparation){
-    return this.http.post<any>(this.URL + '/auth/logintoken', reparation);
+
+  getReparaciones(placa) {
+    return this.http.get<any>(this.URL + '/reparation/onplaca/'+placa); // devuelve un observable
   }
 
+  editarReparacion(id,datos) {
+    return this.http.put<any>(this.URL + '/reparation/_id/'+id, datos); // devuelve un observable
+  }
 }

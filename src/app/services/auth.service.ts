@@ -20,17 +20,18 @@ export class AuthService {
     return this.http.put<any>(this.URL + '/user/id_user/'+ userID, user);
   } */
   loggedIn() {
-    //if(localStorage.getItem('token')){
-      //return true;
-      return !!localStorage.getItem('token');
+    if(localStorage.getItem('token')||localStorage.getItem('id_owner') ){
+      return true;}
     }
   getToken(){
     return localStorage.getItem('token');
   }
   logout(){
+    localStorage.removeItem('id_owner');
     localStorage.removeItem('token');
     localStorage.removeItem('mirol');
     localStorage.removeItem('myId');
+
     this.router.navigate(['./signin'])
   }
 

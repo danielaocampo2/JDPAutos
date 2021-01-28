@@ -35,6 +35,7 @@ import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { RepairComponent } from './components/repair/repair.component';
 import { AdminEmployeeComponent } from './components/admin-employee/admin-employee.component';
+import { OwnerReparationsComponent } from './components/owner-reparations/owner-reparations.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { AdminEmployeeComponent } from './components/admin-employee/admin-employ
     CambiarPasswordComponent,
     VehicleComponent,
     RepairComponent,
-    AdminEmployeeComponent
+    AdminEmployeeComponent,
+    OwnerReparationsComponent
 
     
   ],

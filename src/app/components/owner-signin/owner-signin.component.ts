@@ -26,7 +26,7 @@ export class OwnerSigninComponent implements OnInit {
       (res) => {
         if (res.message == 'accedido') {
           this.error = false;
-          localStorage.setItem('token', res.token);
+          localStorage.setItem('id_owner', res.id);
           this.router.navigate(['/private']);
         } else if(res.message == this.text){
           this.openDialog("");
@@ -36,7 +36,7 @@ export class OwnerSigninComponent implements OnInit {
         }
       },
       (err) => {this.error = true
-           this.openDialog(err);    
+           this.openDialog(err);
       }
     );
   }
@@ -44,7 +44,7 @@ export class OwnerSigninComponent implements OnInit {
   openDialog(errors) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.minWidth = '350px';
-    dialogConfig.maxWidth = '600px'; 
+    dialogConfig.maxWidth = '600px';
     dialogConfig.data = {
 
       msg: errors.error.message,

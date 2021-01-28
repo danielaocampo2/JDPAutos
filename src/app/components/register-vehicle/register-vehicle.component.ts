@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { VehicleService } from 'src/app/services/vehicle.service';
+import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-register-vehicle',
@@ -34,17 +38,19 @@ export class RegisterVehicleComponent implements OnInit {
 
   });
   
-  
+  text = "";
   vehicle = {
     placa: '',
     id_owner: '',
     marca: '',
-    modelo: '',
+    model: '',
     color:"",
     dateIn: ''
 
   };
-  constructor() { }
+  constructor(private vehicleService: VehicleService,
+    private router:Router,
+    private readonly dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -75,9 +81,36 @@ export class RegisterVehicleComponent implements OnInit {
 
 
   registerVehicle() {
+    this.vehicleService.crearVehiculo(this.vehicle)
+    // la respuesta que me da el servidor
+      .subscribe(
+        res =>{
+          this.text = res.message; 
+             this.openDialog()
+        },
+        err => {
+          this.text = err.error.message; 
+          this.openDialog() }//err
+    )
     console.log(this.vehicle);
     
     
   }
 
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.minWidth = '350px';
+    dialogConfig.maxWidth = '600px';
+
+    dialogConfig.data = {
+      title: ":(",
+      msg: this.text,
+    };
+
+    this.dialog.open(InfoDialogComponent, dialogConfig).afterClosed().subscribe((success) => {
+  },
+  (e) => {
+      console.error(e);
+  });
+  }
 }

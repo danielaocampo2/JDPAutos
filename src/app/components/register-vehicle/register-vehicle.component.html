@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="modelo">Modelo:</label>
-                        <input [class.is-invalid] = "validatorGroup.get('modelo').invalid && validatorGroup.get('modelo').touched" type="text" [(ngModel)]="vehicle.modelo" name="modelo" class="form-control" placeholder="Modelo"   formControlName="modelo" autofocus>
+                        <input [class.is-invalid] = "validatorGroup.get('modelo').invalid && validatorGroup.get('modelo').touched" type="text" [(ngModel)]="vehicle.model" name="modelo" class="form-control" placeholder="Modelo"   formControlName="modelo" autofocus>
                         <div *ngIf="(modelo.invalid && modelo.touched) || modelo.dirty">
                             <small *ngIf="modelo.errors?.required" class="text-danger">El modelo del vahiculo es requerido</small>
                           </div>

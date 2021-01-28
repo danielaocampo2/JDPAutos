@@ -13,4 +13,8 @@ export class VehicleService {
     return this.http.get<any>(this.URL + '/car/placa/' + placa); // devuelve un observable
   }
 
+  crearVehiculo(datos){
+    return this.http.post<any>(this.URL + '/car/create' , datos); // devuelve un observable
+  }
+
 }

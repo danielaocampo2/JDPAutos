@@ -86,24 +86,24 @@ export class RegisterVehicleComponent implements OnInit {
       .subscribe(
         res =>{
           this.text = res.message; 
-             this.openDialog()
+             this.openDialog(0)
         },
         err => {
           this.text = err.error.message; 
-          this.openDialog() }//err
+          this.openDialog(1) }//err
     )
     console.log(this.vehicle);
     
     
   }
 
-  openDialog() {
+  openDialog(error) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.minWidth = '350px';
     dialogConfig.maxWidth = '600px';
 
     dialogConfig.data = {
-      title: ":(",
+      title: error== 1?":(":":)",
       msg: this.text,
     };
 

@@ -74,9 +74,9 @@ export class RepairComponent implements OnInit {
           this.reparacion.placa = '';
           this.reparacion.precio = '';
           this.text = res.message; 
-          this.openDialog()
+          this.openDialog(0)
         },
-        err => this.openDialog() //err
+        err => this.openDialog(1) //err
     )
   }
 
@@ -95,7 +95,7 @@ export class RepairComponent implements OnInit {
           this.text = err.error.message; 
           this.repaMostrar = []
           this.reparaciones = []
-          this.openDialog() }//err
+          this.openDialog(1) }//err
     )
   }
 
@@ -111,11 +111,11 @@ export class RepairComponent implements OnInit {
           // guarde token en el local storage
              this.buscarReparaciones()
              this.text = res.message; 
-             this.openDialog()
+             this.openDialog(0)
         },
         err => {
           this.text = err.error.message; 
-          this.openDialog() }//err
+          this.openDialog(1) }//err
     )
     
   }
@@ -123,13 +123,13 @@ export class RepairComponent implements OnInit {
     this.repaMostrar =  this.reparaciones.slice($event.pageIndex*$event.pageSize, $event.pageIndex*$event.pageSize + $event.pageSize);
   }
 
-  openDialog() {
+  openDialog(error) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.minWidth = '350px';
     dialogConfig.maxWidth = '600px';
 
     dialogConfig.data = {
-      title: ":(",
+      title: error== 1?":(":":)",
       msg: this.text,
     };
 

@@ -20,6 +20,7 @@ import { SupervisorGuard } from './guards/supervisor.guard'; // pongalo en las r
 import { AdminGuard } from './guards/admin.guard'; // pongalo en las rutas que quiera proteger
 import { EmpleadoGuard } from './guards/empleado.guard'; // pongalo en las rutas que quiera proteger
 import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
+import { AdminEmployeeComponent } from './components/admin-employee/admin-employee.component';
 
 const routes: Routes = [
   //Ruta inicial
@@ -79,6 +80,11 @@ const routes: Routes = [
     path:'create-repair',
     component:RepairComponent,
     canActivate: [AuthGuard, SupervisorGuard]
+  },
+  {
+    path:'edit-employ',
+    component:AdminEmployeeComponent,
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path:'vehicle',

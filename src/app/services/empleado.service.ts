@@ -29,4 +29,16 @@ export class EmpleadoService {
   cambiarContraseña(datos,id) {
     return this.http.put<any>(this.URL + '/user/password/id_user/'+id, datos);
   }
+  getAll(){
+    return this.http.get<any>(this.URL + '/user/showWorkers/'); // devuelve un observable
+  }
+
+  desactivar(id){
+    let datos = {}
+    return this.http.put<any>(this.URL + '/user/desactivar/id_user/'+id,datos); // devuelve un observable
+  }
+  activar(id){
+    let datos = {}
+    return this.http.put<any>(this.URL + '/user/activar/id_user/'+id,datos); // devuelve un observable
+  }
 }

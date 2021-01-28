@@ -1,50 +1,29 @@
 <div class="row">
     <div class="col-md-4 mx-auto">
         <div class="card">
-            <div class="card-header">
-                Actualizar empleado
-            </div>
-            <div class="card-body">
-                <form (submit)="onSubmit()" [formGroup]="validatorGroup">
-                    <div class="form-group">
-                        <label for="name">Id:</label>
-                        <input [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched" type="text" [(ngModel)]="id" name="name" class="form-control" placeholder="Nombre" formControlName="name" autofocus>
-                        <div *ngIf="(name.invalid && name.touched) || name.dirty">
-                            <small *ngIf="name.errors?.required" class="text-danger">El Id es requerido</small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo:</label>
-                        <input [class.is-invalid]="validatorGroup.get('email').invalid && validatorGroup.get('email').touched" type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Correo" formControlName="email">
-                        <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
-                            <small *ngIf="primEmail.errors?.required" class="text-danger">El Correo es requerido</small>
-                            <!--question mark(?) is a safe navigation operator-->
-                            <small *ngIf="primEmail.errors?.pattern" class="text-danger">Por favor ingresa un correo correcto</small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefono:</label>
-                        <input [class.is-invalid] = "validatorGroup.get('phone').invalid && validatorGroup.get('phone').touched" type="text" [(ngModel)]="user.phone"  class="form-control" placeholder="Telefono" formControlName="phone">
-                        <div *ngIf="(phone.invalid && phone.touched) || phone.dirty">
-                            <small *ngIf="phone.errors?.required" class="text-danger">El telefono es requerido</small>
-                            <!--question mark(?) is a safe navigation operator-->
-                            <small *ngIf="phone.errors?.pattern" class="text-danger">Por favor, ingresa un telefono correcto</small>
-                          </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Estado</label>
-                        <select [class.is-invalid]="validatorGroup.get('role').invalid && validatorGroup.get('role').touched" [(ngModel)]="status" name="role" class="form-control" id="role" formControlName="role">
-                            <div *ngIf="(role.invalid && role.touched) || role.dirty">
-                                <small *ngIf="role.errors?.required" class="text-danger">El empleado debe tener un estado</small>
-                              </div>
-                        <option>0</option>
-                        <option>1</option>
-                      </select>
-                    </div>
-                    <button type="submit" [disabled]="validatorGroup.invalid" class="btn btn-primary btn-block">
-                        Actualizar
-                    </button>
-                </form>
+            <mat-paginator (page)="onPageChange($event)" [length]="empleados.length" [pageSize]="1"
+                [pageSizeOptions]="[1]">
+            </mat-paginator>
+            <div class="card-body" *ngFor="let empleado of empleadosMostrar">  
+                <b>Nombre: </b> <input class="form-control" #name 
+                    value="{{empleado.name}}">
+                <p></p>
+                <b>telefono: </b> <input class="form-control" #phone 
+                    value="{{empleado.phone}}">
+                <p></p>
+                <b>email: </b> <input class="form-control" #email 
+                value="{{empleado.email}}">
+                <p></p>
+                <b>Estado: </b>
+                <select name="type" class="form-control" #estado>
+                    <option>{{empleado.status==0?"Desactivado":"Activado"}}</option>
+                    <option>{{empleado.status==0?"Activado":"Desactivado"}}</option>
+                </select>
+                <p></p>
+                <button type="submit" color="elegant" class="btn btn-primary" style="background-color:#008cba"
+                    (click)="actualizarEmpleado(empleado.id_user,name.value,phone.value,email.value,estado.value)">
+                    Actualizar Datos
+                </button>
             </div>
         </div>
     </div>

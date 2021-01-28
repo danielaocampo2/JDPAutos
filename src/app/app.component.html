@@ -15,12 +15,6 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/private" routerLinkActive="active">Private</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/vehicle" routerLinkActive="active">Vehiculo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/create-repair" routerLinkActive="active">Reparaciones</a>
-                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
@@ -41,7 +35,15 @@
                     <li class="nav-item" *ngIf="mirol() == 'Supervisor de taller'">
                         <a class="nav-link" routerLink="/owner-register" routerLinkActive="active">Registrar Propietario</a>
                     </li>
-                    
+                    <li class="nav-item" *ngIf="mirol() == 'Supervisor de taller'">
+                        <a class="nav-link" routerLink="/create-repair" routerLinkActive="active">Reparaciones</a>
+                    </li>
+                    <li class="nav-item" *ngIf="mirol() == 'Supervisor de taller'">
+                        <a class="nav-link" routerLink="/vehicle" routerLinkActive="active">Buscar vehiculo</a>
+                    </li>
+                    <li class="nav-item" *ngIf="mirol() == 'admin'">
+                        <a class="nav-link" routerLink="/edit-employ" routerLinkActive="active">Editar empleados</a>
+                    </li>
                     <li class="nav-item" *ngIf="mirol() == 'admin'">
                         <a class="nav-link" routerLink="/signup" routerLinkActive="active">Registrar Empleado</a>
                     </li>

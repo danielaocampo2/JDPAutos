@@ -34,6 +34,7 @@ import { OwnerRefreshTokenComponent } from './components/owner-refresh-token/own
 import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { RepairComponent } from './components/repair/repair.component';
+import { AdminEmployeeComponent } from './components/admin-employee/admin-employee.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { RepairComponent } from './components/repair/repair.component';
     OwnerRefreshTokenComponent,
     CambiarPasswordComponent,
     VehicleComponent,
-    RepairComponent
+    RepairComponent,
+    AdminEmployeeComponent
 
     
   ],

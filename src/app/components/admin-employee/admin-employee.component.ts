@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
+import { EmpleadoService } from 'src/app/services/empleado.service';
 
 @Component({
   selector: 'app-admin-employee',
@@ -12,8 +13,7 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
   styleUrls: ['./admin-employee.component.css'],
 })
 export class AdminEmployeeComponent implements OnInit {
-  text =
-    'El empleado ya existe. Revisa por favor la cédula o el correo electrónico asociado a él';
+  text = '';
 
   validatorGroup = new FormGroup({
     email: new FormControl('', [
@@ -36,23 +36,43 @@ export class AdminEmployeeComponent implements OnInit {
     ]),
   });
 
-  id : '';
-  status : '';
-
-  user = {
-    email: '',
-    phone: '',
-    role: '',
-  };
+  empleados = []
+  empleadosMostrar = []
+  datos = {
+    phone: "",
+    email: "",
+    name: ""
+  }
 
   constructor(
-    private authService: AuthService,
+    private empleadoService: EmpleadoService,
     private router: Router,
     private readonly dialog: MatDialog
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.empleadoService.getAll()
+      // la respuesta que me da el servidor
+      .subscribe(
+        res => {
+          this.empleados = []
+          this.empleadosMostrar = []
+          // guarde token en el local storage
+          this.empleados = res.users;
+          this.empleadosMostrar.push(this.empleados[0])
+        },
+        err => {
+          this.text = err.error.message;
+          this.empleados = []
+          this.empleadosMostrar = []
+          this.openDialog(1)
+        }//err
+      )
+  }
 
+  onPageChange($event) {
+    this.empleadosMostrar = this.empleados.slice($event.pageIndex * $event.pageSize, $event.pageIndex * $event.pageSize + $event.pageSize);
+  }
   get primEmail() {
     return this.validatorGroup.get('email');
   }
@@ -79,34 +99,61 @@ export class AdminEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService
-      .signUp(this.user)
+
+  }
+  actualizarEmpleado(id, name, phone, email, state) {
+    this.datos.email = email
+    this.datos.phone = phone
+    this.datos.name = name
+    if(state == "Desactivado"){
+    this.empleadoService.desactivar(id)
       // la respuesta que me da el servidor
       .subscribe(
-        (res) => {
-          // guarde token en el local storage
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['/private']);
+        res => {
         },
-        (err) => this.openDialog() //err
-      );
-  }
+        err => { }
+      )
+    }
+    if(state == "Activado"){
+      this.empleadoService.activar(id)
+      // la respuesta que me da el servidor
+      .subscribe(
+        res => {
+        },
+        err => { }
+      )
+    }
+    this.empleadoService.update(this.datos, id)
+      // la respuesta que me da el servidor
+      .subscribe(
+        res => {
+          // guarde token en el local storage
+          this.text = res.message;
+          this.openDialog(0)
+        },
+        err => {
+          this.text = err.error.message;
+          this.openDialog(1)
+        }//err
+      )
 
-  openDialog() {
+  }
+  openDialog(error) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.minWidth = '350px';
     dialogConfig.maxWidth = '600px';
 
     dialogConfig.data = {
-      title: ':(',
+      title: error == 1 ? ":(" : ":)",
       msg: this.text,
     };
+
 
     this.dialog
       .open(InfoDialogComponent, dialogConfig)
       .afterClosed()
       .subscribe(
-        (success) => {},
+        (success) => { },
         (e) => {
           console.error(e);
         }

@@ -21,6 +21,7 @@ import { AdminGuard } from './guards/admin.guard'; // pongalo en las rutas que q
 import { EmpleadoGuard } from './guards/empleado.guard'; // pongalo en las rutas que quiera proteger
 import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
 import { AdminEmployeeComponent } from './components/admin-employee/admin-employee.component';
+import {OwnerReparationsComponent} from './components/owner-reparations/owner-reparations.component'
 
 const routes: Routes = [
   //Ruta inicial
@@ -90,6 +91,10 @@ const routes: Routes = [
     path:'vehicle',
     component: VehicleComponent,
     canActivate: [AuthGuard, SupervisorGuard]
+  },
+  {
+    path:'owner-reparations',
+    component:OwnerReparationsComponent
   }
 ];
 

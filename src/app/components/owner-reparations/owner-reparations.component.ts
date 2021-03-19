@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class OwnerReparationsComponent implements OnInit {
 
   constructor() { }
-
+  reparaciones =  JSON.parse(localStorage.getItem('reparaciones'));
   ngOnInit(): void {
+    console.log(this.reparaciones)
   }
 
 }

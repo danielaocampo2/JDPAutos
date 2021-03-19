@@ -26,8 +26,18 @@ export class OwnerSigninComponent implements OnInit {
       (res) => {
         if (res.message == 'accedido') {
           this.error = false;
+          console.log(res)
           localStorage.setItem('id_owner', res.id);
-          this.router.navigate(['/private']);
+          let reparacionx = res.reparacionGlobal[0];
+          for (let index = 1; index < res.reparacionGlobal.length; index++) {
+            for (let j = 0; j < res.reparacionGlobal[index].length; j++) {
+              reparacionx.push(res.reparacionGlobal[index][j])
+              
+            }
+            
+          }
+          localStorage.setItem('reparaciones', JSON.stringify(reparacionx));
+          this.router.navigate(['/owner-reparations']);
         } else if(res.message == this.text){
           this.openDialog("");
         }

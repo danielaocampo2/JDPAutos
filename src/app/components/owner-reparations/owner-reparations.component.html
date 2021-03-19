@@ -1,1 +1,16 @@
-<p>owner-reparations works!</p>
+<ng-template [ngIf]="reparaciones.length > 0">
+    <div class="card">
+        <div class="card-body" *ngFor="let reparacion of reparaciones">
+            <b>Placa: </b>
+            {{reparacion.placa}}
+            <p></p><b>Estado: </b>
+            {{reparacion.estado}}
+            <p></p><b>Precio: </b> {{reparacion.precio}}
+            <p></p>
+            <b>Detalles: </b> {{reparacion.detalles}}
+            <p></p>
+        </div>
+        <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [(pageSize)]="pagesize" [rotate]="true">
+        </ngb-pagination>
+    </div>
+</ng-template>

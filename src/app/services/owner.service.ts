@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OwnerService {
-  private URL = 'https://tallerjdpautos.herokuapp.com'; // donde esta el back
+  private URL = environment.apiUrl; //'http://localhost:3000'; // donde esta el back
   constructor(private http: HttpClient, private router: Router) {}
 
   signUp(owner) {

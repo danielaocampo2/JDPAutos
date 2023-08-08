@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment'; // Importa la configuración
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  private URL = 'https://tallerjdpautos.herokuapp.com/user';
+  private URL = `${environment.apiUrl}/user`; //'http://localhost:3000/user';
   constructor(private http: HttpClient) { }
 
   getTeam(){

@@ -25,7 +25,7 @@ export class UploadFileComponent implements OnInit {
     if(this.image != null){
       console.log('send image');
       console.log(this.image.image.split(',')[1]);
-      this.http.post('https://tallerjdpautos.herokuapp.com/user/agregarfoto/'+this.userID, {
+      this.http.post('http://localhost:3000/user/agregarfoto/'+this.userID, {
         imgUrl: this.image.image.split(',')[1],
         name: this.image.name
       }).subscribe((d) => {
